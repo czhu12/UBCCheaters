@@ -4,6 +4,7 @@ defmodule Chatty.Course do
   schema "courses" do
     field :dept, :string
     field :faccode, :string
+    field :title, :string
     field :course, :integer
     has_many :messages, Chatty.Message
     has_many :uploaded_files, Chatty.UploadedFile
@@ -11,7 +12,7 @@ defmodule Chatty.Course do
     timestamps
   end
 
-  @required_fields ~w(dept faccode course)
+  @required_fields ~w(dept title faccode course)
   @optional_fields ~w()
 
   @doc """

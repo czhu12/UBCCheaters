@@ -5,4 +5,8 @@ defmodule Chatty.CourseView do
     courses
   end
 
+  def render("create.json", %{changeset: changeset}) do
+    changeset
+  end
+
 end

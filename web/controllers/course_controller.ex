@@ -11,18 +11,14 @@ defmodule Chatty.CourseController do
     render conn, courses: courses
   end
 
-  def create(conn, %{"course" => course_params}) do
+  def create(conn, course_params) do
     changeset = Course.changeset(%Course{}, course_params)
 
     if changeset.valid? do
       Repo.insert(changeset)
-
-      conn
-      |> put_flash(:info, "Course created successfully.")
-      |> redirect(to: course_path(conn, :index))
-    else
-      render conn, "new.html", changeset: changeset
     end
+
+    render conn, changeset: changeset
   end
 
   def show(conn, %{"id" => id}) do
