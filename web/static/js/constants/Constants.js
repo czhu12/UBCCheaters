@@ -1,12 +1,13 @@
 var keymirror = require('keymirror');                                                                                                                                              
 module.exports = {             
   ActionTypes: keymirror({     
-    RECEIVE_COURSES: null,      
     CREATE_MESSAGE: null,      
-    RECEIVE_MESSAGES: null,
-    RECEIVE_MESSAGE: null,
+    RECEIVE_COURSES: null,      
+    RECEIVE_DEPTS: null,      
     RECEIVE_FILE: null,
-    RECEIVE_FILES: null
+    RECEIVE_FILES: null,
+    RECEIVE_MESSAGES: null,
+    RECEIVE_MESSAGE: null
   }),
 
   PayloadSources: keymirror({

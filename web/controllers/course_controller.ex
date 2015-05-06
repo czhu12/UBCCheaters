@@ -6,9 +6,17 @@ defmodule Chatty.CourseController do
   plug :scrub_params, "course" when action in [:create, :update]
   plug :action
 
-  def index(conn, _params) do
-    courses = Repo.all(Course)
+  def index(conn, params) do
+    dept = String.upcase(params["dept"])
+    query = from c in Course, where: c.dept == ^dept
+    courses = Repo.all(query)
     render conn, courses: courses
+  end
+
+  def meta(conn, params) do
+    query = from c in Course, group_by: c.dept, select: c.dept
+    results = Repo.all(query)
+    render conn, results: results
   end
 
   def create(conn, course_params) do

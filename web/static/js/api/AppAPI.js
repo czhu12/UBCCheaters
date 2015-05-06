@@ -1,4 +1,10 @@
 module.exports = {
+  getDepts: function(callback) {
+    $.getJSON('/api/courses/meta', function(result) {
+      // Here, we return the result
+      callback(result);
+    });
+  },
   getCourses: function(callback) {
     $.getJSON('/api/courses', function(result) {
       // Here, we return the result

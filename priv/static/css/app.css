@@ -127,5 +127,10 @@ hr.style-six {
 .files-box {
   padding-top: 50px; }
 
+/* line 115, stdin */
+.course-search-input {
+  border-radius: 5px;
+  size: 20; }
+
 
 /*# sourceMappingURL=app.css.map*/

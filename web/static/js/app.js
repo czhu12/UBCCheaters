@@ -2,6 +2,8 @@ var AppAPI = require('./api/AppAPI');
 var React = require('react');
 var ChatMessageList = require('./components/ChatMessageList');
 var ChatFileList = require('./components/ChatFileList');
+var CourseSearchBar = require('./components/CourseSearchBar');
+var DeptLink = require('./components/DeptLink');
 var ServerActionCreators = require('./actions/ServerActionCreators');
 var ChatClient = require('./components/ChatClient');
 var FileUpload = require('./components/FileUpload');
@@ -19,12 +21,14 @@ var Link = Router.Link;
 
 var App = React.createClass({
   getInitialState: function () {
-    var courses = this.fetchState();
-    return courses;
+    var state = this.fetchState();
+    return state;
   },
   fetchState: function() {
     var courses = CourseStore.getAll();
+    var depts = CourseStore.getAllDepts();
     return {
+      depts: depts,
       courses: courses
     }
   },
@@ -39,22 +43,31 @@ var App = React.createClass({
     this.setState(this.fetchState());    
   },  
   render: function () {
-    var links = this.state.courses.map(function (course) {
+    var depts = this.state.depts.map(function(dept) {
       return (
-        <li key={course.id}>
-          <Link
-            to="course"
-            params={{ dept: course.dept }}
-          >{course.dept}</Link>
-        </li>
+        <DeptLink dept={dept}/>
       );
     });
+
+    //var links = this.state.courses.map(function (course) {
+    //  return (
+    //    <div>
+    //      <li key={course.id}>
+    //        <Link
+    //          to="course"
+    //          params={{ dept: course.dept }}
+    //        >{course.dept}</Link>
+    //      </li>
+    //    </div>
+    //  );
+    //});
     return (
       <div className="App">
         <div className="row">
           <div className="container">
             <ul className="Master classes-list col-md-1">
-              {links}
+              <CourseSearchBar />
+              {depts}
             </ul>
             <div className="Detail col-md-11">
               <RouteHandler/>
@@ -86,19 +99,21 @@ function routeChanged() {
 
 Router.run(routes, function (Handler) {
   routeChanged();
-  AppAPI.getCourses(function(courses) {
-    ServerActionCreators.receiveAllCourses(courses);
-    var course = RouteUtils.currentCourse();
+  AppAPI.getDepts(function(depts) {
+    
+    ServerActionCreators.receiveAllDepts(depts);
+    //ServerActionCreators.receiveAllCourses(courses);
+    //var course = RouteUtils.currentCourse();
 
-    if (course) {
-      AppAPI.getMessages(course.id, function(messages) {
-        ServerActionCreators.receiveAllMessages(messages);
-      });
+    //if (course) {
+    //  AppAPI.getMessages(course.id, function(messages) {
+    //    ServerActionCreators.receiveAllMessages(messages);
+    //  });
 
-      AppAPI.getFiles(course.id, function(files) {
-        ServerActionCreators.receiveAllFiles(files);
-      });
-    }
+    //  AppAPI.getFiles(course.id, function(files) {
+    //    ServerActionCreators.receiveAllFiles(files);
+    //  });
+    //}
 
     React.render(<Handler/>, document.getElementById('content'));
   });

@@ -7,6 +7,7 @@ var ActionTypes = Constants.ActionTypes;
     
 var CHANGE_EVENT = 'change';
 var courses = [];
+var depts = [];
           
 var CourseStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function(callback) {
@@ -20,6 +21,9 @@ var CourseStore = assign({}, EventEmitter.prototype, {
   },    
   getAll: function() {
     return courses; 
+  },
+  getAllDepts: function() {
+    return depts; 
   },
   lookupDept: function(dept) {
     return _.find(courses, function(course) {
@@ -39,6 +43,9 @@ CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
           courses.push(newCourse);
         }
       }
+      break;
+    case ActionTypes.RECEIVE_DEPTS:
+      depts = action.depts;
       break;
   }
   CourseStore.emitChange();

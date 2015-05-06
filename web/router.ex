@@ -22,6 +22,7 @@ defmodule Chatty.Router do
   scope "/api", Chatty do
     pipe_through :api
 
+    get "courses/meta", CourseController, :meta
     post "courses", CourseController, :create
 
     get "courses/:id/messages", MessageController, :index

@@ -98,6 +98,12 @@ var Constants = require("../constants/Constants");
 var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
+  receiveAllDepts: function receiveAllDepts(depts) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.RECEIVE_DEPTS,
+      depts: depts
+    });
+  },
   receiveAllCourses: function receiveAllCourses(courses) {
     AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_COURSES,
@@ -133,6 +139,12 @@ require.register("web/static/js/api/AppAPI", function(exports, require, module) 
 "use strict";
 
 module.exports = {
+  getDepts: function getDepts(callback) {
+    $.getJSON("/api/courses/meta", function (result) {
+      // Here, we return the result
+      callback(result);
+    });
+  },
   getCourses: function getCourses(callback) {
     $.getJSON("/api/courses", function (result) {
       // Here, we return the result
@@ -165,6 +177,8 @@ var AppAPI = require("./api/AppAPI");
 var React = require("react");
 var ChatMessageList = require("./components/ChatMessageList");
 var ChatFileList = require("./components/ChatFileList");
+var CourseSearchBar = require("./components/CourseSearchBar");
+var DeptLink = require("./components/DeptLink");
 var ServerActionCreators = require("./actions/ServerActionCreators");
 var ChatClient = require("./components/ChatClient");
 var FileUpload = require("./components/FileUpload");
@@ -183,12 +197,14 @@ var App = React.createClass({
   displayName: "App",
 
   getInitialState: function getInitialState() {
-    var courses = this.fetchState();
-    return courses;
+    var state = this.fetchState();
+    return state;
   },
   fetchState: function fetchState() {
     var courses = CourseStore.getAll();
+    var depts = CourseStore.getAllDepts();
     return {
+      depts: depts,
       courses: courses
     };
   },
@@ -203,20 +219,22 @@ var App = React.createClass({
     this.setState(this.fetchState());
   },
   render: function render() {
-    var links = this.state.courses.map(function (course) {
-      return React.createElement(
-        "li",
-        { key: course.id },
-        React.createElement(
-          Link,
-          {
-            to: "course",
-            params: { dept: course.dept }
-          },
-          course.dept
-        )
-      );
+    var depts = this.state.depts.map(function (dept) {
+      return React.createElement(DeptLink, { dept: dept });
     });
+
+    //var links = this.state.courses.map(function (course) {
+    //  return (
+    //    <div>
+    //      <li key={course.id}>
+    //        <Link
+    //          to="course"
+    //          params={{ dept: course.dept }}
+    //        >{course.dept}</Link>
+    //      </li>
+    //    </div>
+    //  );
+    //});
     return React.createElement(
       "div",
       { className: "App" },
@@ -229,7 +247,8 @@ var App = React.createClass({
           React.createElement(
             "ul",
             { className: "Master classes-list col-md-1" },
-            links
+            React.createElement(CourseSearchBar, null),
+            depts
           ),
           React.createElement(
             "div",
@@ -266,19 +285,21 @@ function routeChanged() {}
 
 Router.run(routes, function (Handler) {
   routeChanged();
-  AppAPI.getCourses(function (courses) {
-    ServerActionCreators.receiveAllCourses(courses);
-    var course = RouteUtils.currentCourse();
+  AppAPI.getDepts(function (depts) {
 
-    if (course) {
-      AppAPI.getMessages(course.id, function (messages) {
-        ServerActionCreators.receiveAllMessages(messages);
-      });
+    ServerActionCreators.receiveAllDepts(depts);
+    //ServerActionCreators.receiveAllCourses(courses);
+    //var course = RouteUtils.currentCourse();
 
-      AppAPI.getFiles(course.id, function (files) {
-        ServerActionCreators.receiveAllFiles(files);
-      });
-    }
+    //if (course) {
+    //  AppAPI.getMessages(course.id, function(messages) {
+    //    ServerActionCreators.receiveAllMessages(messages);
+    //  });
+
+    //  AppAPI.getFiles(course.id, function(files) {
+    //    ServerActionCreators.receiveAllFiles(files);
+    //  });
+    //}
 
     React.render(React.createElement(Handler, null), document.getElementById("content"));
   });
@@ -591,6 +612,69 @@ var ChatMessageList = React.createClass({
 
 module.exports = ChatMessageList;});
 
+require.register("web/static/js/components/CourseSearchBar", function(exports, require, module) {
+"use strict";
+
+var React = require("react");
+
+function fetchState() {
+  return {};
+}
+
+var CourseSearchBar = React.createClass({
+  displayName: "CourseSearchBar",
+
+  getInitialState: function getInitialState() {
+    return fetchState();
+  },
+  componentDidMount: function componentDidMount() {},
+  componentWillUnmount: function componentWillUnmount() {},
+  _onChange: function _onChange() {
+    this.setState(fetchState());
+  },
+  render: function render() {
+    return React.createElement("input", { className: "course-search-input" });
+  },
+  componentDidUpdate: function componentDidUpdate() {} });
+
+module.exports = CourseSearchBar;});
+
+require.register("web/static/js/components/DeptLink", function(exports, require, module) {
+"use strict";
+
+var React = require("react");
+
+function fetchState() {
+  return {};
+}
+
+// Props contains dept
+var DeptLink = React.createClass({
+  displayName: "DeptLink",
+
+  getInitialState: function getInitialState() {
+    return fetchState();
+  },
+  componentDidMount: function componentDidMount() {},
+  componentWillUnmount: function componentWillUnmount() {},
+  _onChange: function _onChange() {
+    this.setState(fetchState());
+  },
+  handleClick: function handleClick() {
+    // Here, we want to expand this tab.
+    console.log("hello");
+  },
+  render: function render() {
+    return React.createElement(
+      "li",
+      { onClick: this.handleClick },
+      this.props.dept
+    );
+  }
+});
+
+module.exports = DeptLink;});
+
 require.register("web/static/js/components/FileUpload", function(exports, require, module) {
 "use strict";
 
@@ -763,12 +847,13 @@ require.register("web/static/js/constants/Constants", function(exports, require,
 var keymirror = require("keymirror");
 module.exports = {
   ActionTypes: keymirror({
-    RECEIVE_COURSES: null,
     CREATE_MESSAGE: null,
-    RECEIVE_MESSAGES: null,
-    RECEIVE_MESSAGE: null,
+    RECEIVE_COURSES: null,
+    RECEIVE_DEPTS: null,
     RECEIVE_FILE: null,
-    RECEIVE_FILES: null
+    RECEIVE_FILES: null,
+    RECEIVE_MESSAGES: null,
+    RECEIVE_MESSAGE: null
   }),
 
   PayloadSources: keymirror({
@@ -818,6 +903,7 @@ var ActionTypes = Constants.ActionTypes;
 
 var CHANGE_EVENT = "change";
 var courses = [];
+var depts = [];
 
 var CourseStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function addChangeListener(callback) {
@@ -831,6 +917,9 @@ var CourseStore = assign({}, EventEmitter.prototype, {
   },
   getAll: function getAll() {
     return courses;
+  },
+  getAllDepts: function getAllDepts() {
+    return depts;
   },
   lookupDept: function lookupDept(dept) {
     return _.find(courses, function (course) {
@@ -850,6 +939,9 @@ CourseStore.dispatchToken = AppDispatcher.register(function (payload) {
           courses.push(newCourse);
         }
       }
+      break;
+    case ActionTypes.RECEIVE_DEPTS:
+      depts = action.depts;
       break;
   }
   CourseStore.emitChange();

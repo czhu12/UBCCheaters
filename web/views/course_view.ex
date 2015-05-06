@@ -9,4 +9,7 @@ defmodule Chatty.CourseView do
     changeset
   end
 
+  def render("meta.json", %{results: results}) do
+    results
+  end
 end
