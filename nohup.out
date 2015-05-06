@@ -1,0 +1,20 @@
+
+> @ watch /home/chris/exp/chatty
+> watchify web/static/js/app.js -o web/static/js/bundle.js -v
+
+10770 bytes written to web/static/js/bundle.js (0.10 seconds)
+1326 bytes written to web/static/js/bundle.js (0.01 seconds)
+1326 bytes written to web/static/js/bundle.js (0.03 seconds)
+1326 bytes written to web/static/js/bundle.js (0.01 seconds)
+1326 bytes written to web/static/js/bundle.js (0.03 seconds)
+1342 bytes written to web/static/js/bundle.js (0.02 seconds)
+1326 bytes written to web/static/js/bundle.js (0.02 seconds)
+
+> @ watch /home/chris/exp/chatty
+> watchify web/static/js/app.js -o priv/static/js/bundle.js -v
+
+1326 bytes written to priv/static/js/bundle.js (0.05 seconds)
+1322 bytes written to priv/static/js/bundle.js (0.03 seconds)
+1321 bytes written to priv/static/js/bundle.js (0.02 seconds)
+1321 bytes written to priv/static/js/bundle.js (0.03 seconds)
+1321 bytes written to priv/static/js/bundle.js (0.01 seconds)

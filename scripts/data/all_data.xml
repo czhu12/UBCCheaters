@@ -1,0 +1,257 @@
+<depts>
+  <dept key="AANB" title="Applied Animal Biology" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="ADHE" title="Adult and Higher Education" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="AFST" title="African Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="AGEC" title="Agricultural Economics" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="ANAE" title="Anesthesia" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ANAT" title="Anatomy" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ANSC" title="Animal Science" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="ANTH" title="Anthropology" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="APBI" title="Applied Biology" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="APPP" title="Applied Science Professional Program Platform" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="APSC" title="Applied Science" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="ARBC" title="Arabic Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ARC" title="Alternative Routes to Computing" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="ARCH" title="Architecture" faccode="SALA" faculty="School of Arch and Landscape Arch"/>
+  <dept key="ARCL" title="Anthropological Archaeology" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ARST" title="Archival Studies" faccode="LAIS" faculty="School of Library, Archival, and Info"/>
+  <dept key="ARTH" title="Art History" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ARTS" title="Arts One Program" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ASIA" title="Asian Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ASIC" title="Arts and Science Interdisciplinary Courses" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="ASLA" title="Asian Languages" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ASTR" title="Astronomy" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="ASTU" title="Arts Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ATSC" title="Atmospheric Science" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="AUDI" title="Audiology and Speech Sciences" faccode="AUDI" faculty="School of Audiology and Speech Scie"/>
+  <dept key="BA" title="Business Administration: Core" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAAC" title="Business Administration: Accounting" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BABS" title="Business Administration: Business Statistics" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAEN" title="Business Administration: Entrepreneurship" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAFI" title="Business Administration: Finance" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAHC" title="Business Administration: Health Care" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAHR" title="Business Administration: Human Resources Management" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAIM" title="Business Administration: International Management" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAIT" title="Business Administration: Business Technology Management" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BALA" title="Business Administration: Law" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAMA" title="Business Administration: Marketing" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAMS" title="Business Administration: Management Science" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAPA" title="Business Administration: Policy Analysis" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BASC" title="Business Administration: Supply Chain" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BASD" title="Business Administration: Sustainable Development" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BASM" title="Business Administration: Strategic Management" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BATL" title="Business Administration: Transportation and Logistics" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BATM" title="Business Administration: Technology Management" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BAUL" title="Business Administration: Urban Land Economics" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="BIOC" title="Biochemistry" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="BIOF" title="Bioinformatics" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="BIOL" title="Biology" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="BIOT" title="Biotechnology" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="BMEG" title="Biomedical Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="BOTA" title="Botany" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="BRDG" title="Bridge Program" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="BUSI" title="Business" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="CAPS" title="Cellular, Anatomical and Physiological Sciences" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="CCFI" title="Centre for Cross-Faculty Inquiry" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="CCST" title="Critical and Curatorial Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CDST" title="Canadian Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CEEN" title="Clean Energy Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="CELL" title="Cell and Developmental Biology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="CENS" title="Central, Eastern and Northern European Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CHBE" title="Chemical and Biological Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="CHEM" title="Chemistry" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="CHIL" title="Children's Literature" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CHIN" title="Chinese" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CICS" title="Computing Information and Cognitive Systems" faccode="CFIS" faculty="College for Interdisciplinary St"/>
+  <dept key="CIVL" title="Civil Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="CLCH" title="Classical Chinese" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CLST" title="Classical Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CNPS" title="Counselling Psychology" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="CNRS" title="Classical, Near Eastern and Religious Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CNTO" title="Cantonese" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="COEC" title="Commerce Economics" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="COGS" title="Cognitive Systems Program" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="COHR" title="Commerce Human Resources" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="COMM" title="Commerce" faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="CONS" title="Natural Resources Conservation" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="CPEN" title="Computer Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="CPSC" title="Computer Science" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="CRWR" title="Creative Writing" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CSIS" title="Critical Studies in Sexuality" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="CSPW" title="Coordinated Science Program Workshop" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="DANI" title="Danish" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="DENT" title="Dentistry" faccode="DENT" faculty="Faculty of Dentistry"/>
+  <dept key="DERM" title="Clinical Dermatology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="DHYG" title="Dental Hygiene" faccode="DENT" faculty="Faculty of Dentistry"/>
+  <dept key="DMED" title="Digital Media" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="DPAS" title="Doctor/Dentist, Patient and Society" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ECED" title="Early Childhood Education" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="ECON" title="Economics" faccode="ECON" faculty="Vancouver School of Economics"/>
+  <dept key="EDCP" title="Curriculum and Pedagogy" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="EDST" title="Educational Studies" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="EDUC" title="Education" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="EECE" title="Electrical and Computer Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="ELEC" title="Electrical Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="ELI" title="English Language Institute" faccode="REGI" faculty="Regi"/>
+  <dept key="EMBA" title="Executive M.B.A." faccode="COMM" faculty="Faculty of Comm and Bus Admin"/>
+  <dept key="EMER" title="Emergency Medicine" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ENDS" title="Environmental Design" faccode="SALA" faculty="School of Arch and Landscape Arch"/>
+  <dept key="ENGL" title="English" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ENPH" title="Engineering Physics" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="ENPP" title="Engineering and Public Policy" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="ENVR" title="Environmental Science" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="EOSC" title="Earth and Ocean Sciences" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="EPSE" title="Educational Psychology and Special Education" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="ETEC" title="Educational Technology" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="EXCH" title="Exchange Programs" faccode="REGI" faculty="Regi"/>
+  <dept key="EXGR" title="Exchange Graduate Research" faccode="REGI" faculty="Regi"/>
+  <dept key="FACT" title="Faculty of Arts Commuter Transition Program" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FEBC" title="Forest Engineering British Columbia" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="FHIS" title="French, Hispanic and Italian Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FIPR" title="Film Production" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FISH" title="Fisheries Research" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="FIST" title="Film Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FMED" title="Foundations of Medicine" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="FMPR" title="Family Practice" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="FMST" title="Family Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FNEL" title="First Nations and Endangered Languages Program" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FNH" title="Food, Nutrition and Health" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="FNIS" title="First Nations and Indigenous Studies Program" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FOOD" title="Food Science" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="FOPR" title="Forest Operations" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="FRE" title="Food and Resource Economics" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="FREN" title="French" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="FRSI" title="Forestry Silviculture Institute" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="FRST" title="Forestry" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="GBPR" title="Green Bioproducts" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="GENE" title="Genetics" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="GEOB" title="Geographical Biogeosciences" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GEOG" title="Geography" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GERM" title="German" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GPP" title="Global Public Policy" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GREK" title="Greek" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GRS" title="Global Resource Systems" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="GRSJ" title="Gender, Race, Sexuality and Social Justice" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="GSAT" title="Genome Science and Technology" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="HEBR" title="Hebrew" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="HESO" title="Health and Society" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="HGSE" title="Haida Gwaii Semesters" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="HINU" title="Hindi-Urdu" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="HIST" title="History" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="HUNU" title="Human Nutrition" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="IAR" title="Institute of Asian Research" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="IEST" title="European Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="IGEN" title="Integrated Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="IHHS" title="Interprofessional Health and Human Service" faccode="CHD" faculty="College of Health Disciplines"/>
+  <dept key="INDE" title="Interdepartmental Medicine" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="INDO" title="Indonesian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="INDS" title="Interdisciplinary Studies" faccode="GRAD" faculty="Faculty of Grad and Pdoc Studies"/>
+  <dept key="INFO" title="Information Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ISCI" title="Integrated Sciences" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="ITAL" title="Italian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="ITST" title="Italian Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="IWME" title="Integrated Water Management Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="JAPN" title="Japanese" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="JRNL" title="Journalism" faccode="JRNL" faculty="School of Journalism"/>
+  <dept key="KIN" title="Kinesiology" faccode="KIN" faculty="School of Kinesiology"/>
+  <dept key="KORN" title="Korean" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="LAIS" title="Library, Archival and Information Studies" faccode="LAIS" faculty="School of Library, Archival, and Info"/>
+  <dept key="LARC" title="Landscape Architecture" faccode="SALA" faculty="School of Arch and Landscape Arch"/>
+  <dept key="LASO" title="Law and Society" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="LAST" title="Latin American Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="LATN" title="Latin" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="LAW" title="Law" faccode="LAW" faculty="Faculty of Law"/>
+  <dept key="LFS" title="Land & Food Systems" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="LIBE" title="Teacher Librarianship" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="LIBR" title="Library and Information Studies" faccode="LAIS" faculty="School of Library, Archival, and Info"/>
+  <dept key="LING" title="Linguistics" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="LLED" title="Language and Literacy Education" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="MATH" title="Mathematics" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="MDVL" title="Medieval Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="MECH" title="Mechanical Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="MEDD" title="Doctor of Medicine" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="MEDG" title="Medical Genetics" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="MEDI" title="Medicine" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="MICB" title="Microbiology" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="MIDW" title="Midwifery" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="MINE" title="Mining Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="MRNE" title="Marine Science" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="MTRL" title="Materials Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="MUSC" title="Music" faccode="MUSC" faculty="School of Music"/>
+  <dept key="NAME" title="Naval Architecture and Marine Engineering" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="NEST" title="Near Eastern Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="NEUR" title="Neurosurgery" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="NRSC" title="Neuroscience" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="NURS" title="Nursing" faccode="NURS" faculty="School of Nursing"/>
+  <dept key="OBMS" title="Oral Biological Medical Sciences" faccode="DENT" faculty="Faculty of Dentistry"/>
+  <dept key="OBST" title="Obstetrics and Gynaecology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="OHS" title="Oral Health Sciences" faccode="DENT" faculty="Faculty of Dentistry"/>
+  <dept key="ONCO" title="Oncology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="OPTH" title="Ophthalmology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ORNT" title="Orientation to Medical School" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="ORPA" title="Orthopaedics" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PAED" title="Paediatrics" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PATH" title="Pathology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PCTH" title="Pharmacology and Therapeutics" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PERS" title="Persian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="PHAR" title="Pharmaceutical Sciences" faccode="PHAR" faculty="Faculty of Pharmaceutical Sciences"/>
+  <dept key="PHIL" title="Philosophy" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="PHRM" title="Pharmacy" faccode="PHAR" faculty="Faculty of Pharmaceutical Sciences"/>
+  <dept key="PHTH" title="Physical Therapy" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PHYL" title="Cellular and Physiological Sciences" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PHYS" title="Physics" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="PLAN" title="Community and Regional Planning" faccode="PLAN" faculty="School of Comm and Reg Planning"/>
+  <dept key="PLAS" title="Plastic Surgery" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PLNT" title="Plant Science" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="POLI" title="Political Science" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="POLS" title="Polish" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="PORT" title="Portuguese" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="PRIN" title="Principles of Human Biology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PSYC" title="Psychology" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="PSYT" title="Psychiatry" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="PUNJ" title="Punjabi" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="RADI" title="Radiology" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="RELG" title="Religious Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="RGLA" title="Religion, Literature and The Arts" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="RHSC" title="Rehabilitation Sciences" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="RMES" title="Resource Management and Environmental Studies" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="RMST" title="Romance Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="RSOT" title="Occupational Therapy" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="RUSS" title="Russian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SANS" title="Sanskrit" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SCAN" title="Scandinavian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SCIE" title="Science" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="SEAL" title="Southeast Asian Languages" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SLAV" title="Slavic Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SOAL" title="South Asian Languages" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SOCI" title="Sociology" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SOIL" title="Soil Science" faccode="LFS" faculty="Faculty of Land and Food Systems"/>
+  <dept key="SOWK" title="Social Work" faccode="SOWK" faculty="School of Social Work"/>
+  <dept key="SPAN" title="Spanish" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="SPHA" title="School of Population & Public Health" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="SPPH" title="School of Population & Public Health" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="STAT" title="Statistics" faccode="SCIE" faculty="Faculty of Science"/>
+  <dept key="STS" title="Science and Technology Studies" faccode="GRAD" faculty="Faculty of Grad and Pdoc Studies"/>
+  <dept key="SURG" title="Surgery" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="SWED" title="Swedish" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="TEST" title="Test" faccode="REGI" faculty="Regi"/>
+  <dept key="THTR" title="Theatre" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="TIBT" title="Tibetan Languages" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="TRSC" title="Transition School" faccode=" " faculty="No Faculty (Blank for Cross Edits)"/>
+  <dept key="UDES" title="Urban Design" faccode="SALA" faculty="School of Arch and Landscape Arch"/>
+  <dept key="UFOR" title="Urban Forestry" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="UKRN" title="Ukrainian" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="URO" title="Undergraduate Research Opportunities" faccode=" " faculty="No Faculty (Blank for Cross Edits)"/>
+  <dept key="UROL" title="Urological Surgery" faccode="MEDI" faculty="Faculty of Medicine"/>
+  <dept key="URST" title="Urban Studies" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="URSY" title="Urban Systems" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="VANT" title="Vantage College" faccode="VANT" faculty="Vantage College"/>
+  <dept key="VGRD" title="Visiting Graduate Student" faccode="GRAD" faculty="Faculty of Grad and Pdoc Studies"/>
+  <dept key="VISA" title="Visual Arts" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="VRHC" title="Vocational Rehabilitation Counselling" faccode="EDUC" faculty="Faculty of Education"/>
+  <dept key="VURS" title="Visiting Undergraduate Research Students" faccode="APSC" faculty="Faculty of Applied Science"/>
+  <dept key="WOOD" title="Wood Products Processing" faccode="FRST" faculty="Faculty of Forestry"/>
+  <dept key="WRDS" title="Art Studies in Writing" faccode="ARTS" faculty="Faculty of Arts"/>
+  <dept key="WRIT" title="University Writing Centre Courses" faccode="CCFE" faculty="Centre for Continuing Education"/>
+  <dept key="ZOOL" title="Zoology" faccode="SCIE" faculty="Faculty of Science"/>
+</depts>

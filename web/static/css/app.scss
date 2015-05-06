@@ -1,0 +1,113 @@
+* {margin:0;padding:0;}
+h4 {
+  margin:0;
+  padding:0;
+}
+html, body{
+    height:100%;
+    background:#eee;
+    overflow: hidden;
+}
+#menu {
+    background:#ccc;
+    width:220px;
+    height:100%;
+}
+.App {
+  padding-top: 10px;
+}
+#menu ul {
+    height: 100%;
+    overflow: auto;
+}            
+
+html, body {
+  height: 100%;
+}
+
+#content {
+  height: 100%;
+  width: 100%;
+}
+
+hr {
+  padding: 0;
+  margin: 10px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  padding-top: 1em;
+  background-color: #f5f5f5;
+}
+
+.files-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.message-user {
+  margin-right: 10px;
+}
+
+.file-link {
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.message-divider {
+  border-color:#34495e;
+}
+
+.messages-container {
+  height: 100%;
+}
+
+.messages-list {
+  height: 80%;
+  overflow: auto;
+}
+
+.file-upload {
+  margin-bottom: 15px;
+}
+
+hr.style-six {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.message {
+  height: 40px;
+}
+
+.Detail {
+  height: 100%;
+}
+
+.comment-box {
+  height: 100%;
+}
+.classes-list {
+  padding-top: 50px;
+}
+
+.files-box {
+  padding-top: 50px;
+}

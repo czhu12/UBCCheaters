@@ -1,0 +1,33 @@
+{
+  "repository": {},
+  "scripts": {
+    "watch": "watchify web/static/js/app.js -o priv/static/js/bundle.js -v",
+    "browserify": "browserify web/static/js/app.js > priv/static/js/bundle.js",
+    "build": "npm run browserify "
+  },
+  "dependencies": {
+    "babel-brunch": "^4.0.0",
+    "browserify": "^9.0.8",
+    "brunch": "git://github.com/brunch/brunch#5176b6b4bf70cd8cb9dad0058dd3e83e8d983218",
+    "clean-css-brunch": ">= 1.0 < 1.8",
+    "css-brunch": ">= 1.0 < 1.8",
+    "events": "^1.0.2",
+    "flux": "^2.0.1",
+    "javascript-brunch": ">= 1.0 < 1.8",
+    "keymirror": "^0.1.1",
+    "normalize.css": "^3.0.3",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.2",
+    "react-router": "^0.13.3",
+    "reactify": "^1.1.0",
+    "sass-brunch": "git://github.com/brunch/sass-brunch.git#master",
+    "uglify-js-brunch": ">= 1.0 < 1.8",
+    "underscore": "^1.8.3",
+    "watchify": "^3.1.2"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
