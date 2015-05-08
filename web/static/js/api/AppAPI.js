@@ -5,8 +5,8 @@ module.exports = {
       callback(result);
     });
   },
-  getCourses: function(callback) {
-    $.getJSON('/api/courses', function(result) {
+  getCourses: function(dept, callback) {
+    $.getJSON('/api/courses', {dept: dept}, function(result) {
       // Here, we return the result
       callback(result);
     });

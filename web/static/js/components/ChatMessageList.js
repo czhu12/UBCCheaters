@@ -19,7 +19,7 @@ var ChatMessageList = React.createClass({
     $(".messages-list").height(document.documentElement.clientHeight - 140);
   },
   componentWillUnmount: function() {
-    MessageStore.removeListener(this._onChange); 
+    MessageStore.removeChangeListener(this._onChange); 
   },
   _onChange: function() {      
     this.setState(fetchState());    

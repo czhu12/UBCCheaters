@@ -8,6 +8,7 @@ var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 var courses = [];
 var depts = [];
+var currentQuery = "";
           
 var CourseStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function(callback) {
@@ -25,13 +26,30 @@ var CourseStore = assign({}, EventEmitter.prototype, {
   getAllDepts: function() {
     return depts; 
   },
+  getFilteredDepts: function() {
+    var filteredDepts = depts.filter(function(dept) {
+      return belongsIn(dept, currentQuery);
+    });
+    return filteredDepts;
+  },
+  getCoursesForDept: function(dept) {
+    var filteredCourses = courses.filter(function(course) {
+      return course.dept.toLowerCase() == dept.toLowerCase();
+    });
+
+    return filteredCourses;
+  },
   lookupDept: function(dept) {
     return _.find(courses, function(course) {
-      return course.dept == dept;
+      return course.dept.toLowerCase() == dept.toLowerCase();
     });
-  }
-});       
-          
+  },
+});
+
+function belongsIn(dept, query) {
+  return dept.toLowerCase().indexOf(query.toLowerCase()) > -1;
+}
+
 CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.type) {
@@ -47,6 +65,9 @@ CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
     case ActionTypes.RECEIVE_DEPTS:
       depts = action.depts;
       break;
+    case ActionTypes.SEARCH_DEPTS:
+      currentQuery = action.query;
+      break;
   }
   CourseStore.emitChange();
 });
@@ -54,7 +75,7 @@ CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
 function hasCourse(newCourse) {
   for (var i = 0; i < courses.length; i++) {
     var course = courses[i];
-    if (course.dept == newCourse.dept) {
+    if (course.id == newCourse.id) {
       return true;
     }
   }
@@ -62,4 +83,3 @@ function hasCourse(newCourse) {
 }
 
 module.exports = CourseStore;
-

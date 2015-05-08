@@ -42,7 +42,6 @@ var Footer = React.createClass({
       var course = RouteUtils.currentCourse();
       var thiz = this;
       AppAPI.createMessage(course.id, message, function(result) {
-        console.log("clearning userInput");
         thiz.setState({userInput: ''}); 
       });
     }

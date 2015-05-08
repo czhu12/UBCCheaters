@@ -90,6 +90,22 @@
   globals.require.list = list;
   globals.require.brunch = true;
 })();
+require.register("web/static/js/actions/ModelCreationActions", function(exports, require, module) {
+"use strict";
+
+var AppDispatcher = require("../dispatcher/AppDispatcher");
+var Constants = require("../constants/Constants");
+var ActionTypes = Constants.ActionTypes;
+
+module.exports = {
+  receiveAllDepts: function receiveAllDepts(depts) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.RECEIVE_DEPTS,
+      depts: depts
+    });
+  }
+};});
+
 require.register("web/static/js/actions/ServerActionCreators", function(exports, require, module) {
 "use strict";
 
@@ -135,6 +151,29 @@ module.exports = {
     });
   } };});
 
+require.register("web/static/js/actions/ViewActions", function(exports, require, module) {
+"use strict";
+
+var AppAPI = require("../api/AppAPI");
+var AppDispatcher = require("../dispatcher/AppDispatcher");
+var Constants = require("../constants/Constants");
+var ServerActionCreators = require("./ServerActionCreators");
+var ActionTypes = Constants.ActionTypes;
+
+module.exports = {
+  searchDepts: function searchDepts(query) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.SEARCH_DEPTS,
+      query: query
+    });
+  },
+  fetchCoursesForDept: function fetchCoursesForDept(dept) {
+    AppAPI.getCourses(dept, function (courses) {
+      ServerActionCreators.receiveAllCourses(courses);
+    });
+  }
+};});
+
 require.register("web/static/js/api/AppAPI", function(exports, require, module) {
 "use strict";
 
@@ -145,8 +184,8 @@ module.exports = {
       callback(result);
     });
   },
-  getCourses: function getCourses(callback) {
-    $.getJSON("/api/courses", function (result) {
+  getCourses: function getCourses(dept, callback) {
+    $.getJSON("/api/courses", { dept: dept }, function (result) {
       // Here, we return the result
       callback(result);
     });
@@ -201,12 +240,9 @@ var App = React.createClass({
     return state;
   },
   fetchState: function fetchState() {
-    var courses = CourseStore.getAll();
-    var depts = CourseStore.getAllDepts();
+    var depts = CourseStore.getFilteredDepts();
     return {
-      depts: depts,
-      courses: courses
-    };
+      depts: depts };
   },
   componentDidMount: function componentDidMount() {
     CourseStore.addChangeListener(this._onChange);
@@ -223,18 +259,6 @@ var App = React.createClass({
       return React.createElement(DeptLink, { dept: dept });
     });
 
-    //var links = this.state.courses.map(function (course) {
-    //  return (
-    //    <div>
-    //      <li key={course.id}>
-    //        <Link
-    //          to="course"
-    //          params={{ dept: course.dept }}
-    //        >{course.dept}</Link>
-    //      </li>
-    //    </div>
-    //  );
-    //});
     return React.createElement(
       "div",
       { className: "App" },
@@ -456,7 +480,7 @@ var ChatFileList = React.createClass({
     $(".files-list").height(document.documentElement.clientHeight);
   },
   componentWillUnmount: function componentWillUnmount() {
-    FileStore.removeListener(this._onChange);
+    FileStore.removeChangeListener(this._onChange);
   },
   _onChange: function _onChange() {
     this.setState(fetchState());
@@ -578,7 +602,7 @@ var ChatMessageList = React.createClass({
     $(".messages-list").height(document.documentElement.clientHeight - 140);
   },
   componentWillUnmount: function componentWillUnmount() {
-    MessageStore.removeListener(this._onChange);
+    MessageStore.removeChangeListener(this._onChange);
   },
   _onChange: function _onChange() {
     this.setState(fetchState());
@@ -616,9 +640,12 @@ require.register("web/static/js/components/CourseSearchBar", function(exports, r
 "use strict";
 
 var React = require("react");
+var ViewActions = require("../actions/ViewActions.js");
 
 function fetchState() {
-  return {};
+  return {
+    query: ""
+  };
 }
 
 var CourseSearchBar = React.createClass({
@@ -632,8 +659,16 @@ var CourseSearchBar = React.createClass({
   _onChange: function _onChange() {
     this.setState(fetchState());
   },
+  handleChange: function handleChange(e) {
+    this.setState({ query: e.target.value });
+    ViewActions.searchDepts(e.target.value);
+  },
   render: function render() {
-    return React.createElement("input", { className: "course-search-input" });
+    return React.createElement("input", {
+      value: this.state.username,
+      className: "course-search-input",
+      onChange: this.handleChange
+    });
   },
   componentDidUpdate: function componentDidUpdate() {} });
 
@@ -642,10 +677,15 @@ module.exports = CourseSearchBar;});
 require.register("web/static/js/components/DeptLink", function(exports, require, module) {
 "use strict";
 
+var CourseStore = require("../stores/CourseStore");
 var React = require("react");
+var ViewActions = require("../actions/ViewActions");
 
-function fetchState() {
-  return {};
+function fetchState(dept) {
+  var deptCourses = CourseStore.getCoursesForDept(dept);
+  return {
+    courses: deptCourses
+  };
 }
 
 // Props contains dept
@@ -653,22 +693,35 @@ var DeptLink = React.createClass({
   displayName: "DeptLink",
 
   getInitialState: function getInitialState() {
-    return fetchState();
+    return fetchState(this.props.dept);
   },
-  componentDidMount: function componentDidMount() {},
-  componentWillUnmount: function componentWillUnmount() {},
+  componentDidMount: function componentDidMount() {
+    CourseStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function componentWillUnmount() {
+    CourseStore.removeChangeListener(this._onChange);
+  },
   _onChange: function _onChange() {
-    this.setState(fetchState());
+    this.setState(fetchState(this.props.dept));
   },
   handleClick: function handleClick() {
     // Here, we want to expand this tab.
-    console.log("hello");
+    ViewActions.fetchCoursesForDept(this.props.dept.toUpperCase());
   },
   render: function render() {
+    var courses = this.state.courses.map(function (course) {
+      return React.createElement(
+        "li",
+        null,
+        course.course
+      );
+    });
+
     return React.createElement(
       "li",
-      { onClick: this.handleClick },
-      this.props.dept
+      { key: this.props.dept, onClick: this.handleClick },
+      this.props.dept,
+      courses
     );
   }
 });
@@ -788,7 +841,6 @@ var Footer = React.createClass({
       var course = RouteUtils.currentCourse();
       var thiz = this;
       AppAPI.createMessage(course.id, message, function (result) {
-        console.log("clearning userInput");
         thiz.setState({ userInput: "" });
       });
     }
@@ -853,7 +905,8 @@ module.exports = {
     RECEIVE_FILE: null,
     RECEIVE_FILES: null,
     RECEIVE_MESSAGES: null,
-    RECEIVE_MESSAGE: null
+    RECEIVE_MESSAGE: null,
+    SEARCH_DEPTS: null
   }),
 
   PayloadSources: keymirror({
@@ -904,6 +957,7 @@ var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = "change";
 var courses = [];
 var depts = [];
+var currentQuery = "";
 
 var CourseStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function addChangeListener(callback) {
@@ -921,12 +975,28 @@ var CourseStore = assign({}, EventEmitter.prototype, {
   getAllDepts: function getAllDepts() {
     return depts;
   },
+  getFilteredDepts: function getFilteredDepts() {
+    var filteredDepts = depts.filter(function (dept) {
+      return belongsIn(dept, currentQuery);
+    });
+    return filteredDepts;
+  },
+  getCoursesForDept: function getCoursesForDept(dept) {
+    var filteredCourses = courses.filter(function (course) {
+      return course.dept.toLowerCase() == dept.toLowerCase();
+    });
+
+    return filteredCourses;
+  },
   lookupDept: function lookupDept(dept) {
     return _.find(courses, function (course) {
-      return course.dept == dept;
+      return course.dept.toLowerCase() == dept.toLowerCase();
     });
-  }
-});
+  } });
+
+function belongsIn(dept, query) {
+  return dept.toLowerCase().indexOf(query.toLowerCase()) > -1;
+}
 
 CourseStore.dispatchToken = AppDispatcher.register(function (payload) {
   var action = payload.action;
@@ -943,6 +1013,9 @@ CourseStore.dispatchToken = AppDispatcher.register(function (payload) {
     case ActionTypes.RECEIVE_DEPTS:
       depts = action.depts;
       break;
+    case ActionTypes.SEARCH_DEPTS:
+      currentQuery = action.query;
+      break;
   }
   CourseStore.emitChange();
 });
@@ -950,7 +1023,7 @@ CourseStore.dispatchToken = AppDispatcher.register(function (payload) {
 function hasCourse(newCourse) {
   for (var i = 0; i < courses.length; i++) {
     var course = courses[i];
-    if (course.dept == newCourse.dept) {
+    if (course.id == newCourse.id) {
       return true;
     }
   }

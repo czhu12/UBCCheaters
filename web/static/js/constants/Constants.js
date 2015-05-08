@@ -7,7 +7,8 @@ module.exports = {
     RECEIVE_FILE: null,
     RECEIVE_FILES: null,
     RECEIVE_MESSAGES: null,
-    RECEIVE_MESSAGE: null
+    RECEIVE_MESSAGE: null,
+    SEARCH_DEPTS: null
   }),
 
   PayloadSources: keymirror({

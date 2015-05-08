@@ -24964,7 +24964,29 @@ module.exports = {
 };
 
 
-},{"../constants/Constants":214,"../dispatcher/AppDispatcher":215}],203:[function(require,module,exports){
+},{"../constants/Constants":215,"../dispatcher/AppDispatcher":216}],203:[function(require,module,exports){
+var AppAPI = require('../api/AppAPI');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var Constants = require('../constants/Constants');
+var ServerActionCreators = require('./ServerActionCreators');
+var ActionTypes = Constants.ActionTypes;
+
+module.exports = {
+  searchDepts: function(query) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.SEARCH_DEPTS,
+      query: query
+    });
+  },
+  fetchCoursesForDept: function(dept) {
+    AppAPI.getCourses(dept, function(courses) {
+      ServerActionCreators.receiveAllCourses(courses);
+    });
+  }
+};
+
+
+},{"../api/AppAPI":204,"../constants/Constants":215,"../dispatcher/AppDispatcher":216,"./ServerActionCreators":202}],204:[function(require,module,exports){
 module.exports = {
   getDepts: function(callback) {
     $.getJSON('/api/courses/meta', function(result) {
@@ -24972,8 +24994,8 @@ module.exports = {
       callback(result);
     });
   },
-  getCourses: function(callback) {
-    $.getJSON('/api/courses', function(result) {
+  getCourses: function(dept, callback) {
+    $.getJSON('/api/courses', {dept: dept}, function(result) {
       // Here, we return the result
       callback(result);
     });
@@ -24999,7 +25021,7 @@ module.exports = {
 };
 
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 var AppAPI = require('./api/AppAPI');
 var React = require('react');
 var ChatMessageList = require('./components/ChatMessageList');
@@ -25020,18 +25042,15 @@ var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
   
-
 var App = React.createClass({displayName: "App",
   getInitialState: function () {
     var state = this.fetchState();
     return state;
   },
   fetchState: function() {
-    var courses = CourseStore.getAll();
-    var depts = CourseStore.getAllDepts();
+    var depts = CourseStore.getFilteredDepts();
     return {
       depts: depts,
-      courses: courses
     }
   },
   componentDidMount: function() { 
@@ -25051,18 +25070,6 @@ var App = React.createClass({displayName: "App",
       );
     });
 
-    //var links = this.state.courses.map(function (course) {
-    //  return (
-    //    <div>
-    //      <li key={course.id}>
-    //        <Link
-    //          to="course"
-    //          params={{ dept: course.dept }}
-    //        >{course.dept}</Link>
-    //      </li>
-    //    </div>
-    //  );
-    //});
     return (
       React.createElement("div", {className: "App"}, 
         React.createElement("div", {className: "row"}, 
@@ -25136,7 +25143,7 @@ socket.join('rooms:lobby', {}).receive('ok', function(channel) {
 });
 
 
-},{"./actions/ServerActionCreators":202,"./api/AppAPI":203,"./components/ChatClient":205,"./components/ChatFileList":207,"./components/ChatMessageList":209,"./components/CourseSearchBar":210,"./components/DeptLink":211,"./components/FileUpload":212,"./components/Footer":213,"./stores/CourseStore":216,"./utils/RouteUtils":219,"./utils/SocketUtils":220,"react":200,"react-router":32}],205:[function(require,module,exports){
+},{"./actions/ServerActionCreators":202,"./api/AppAPI":204,"./components/ChatClient":206,"./components/ChatFileList":208,"./components/ChatMessageList":210,"./components/CourseSearchBar":211,"./components/DeptLink":212,"./components/FileUpload":213,"./components/Footer":214,"./stores/CourseStore":217,"./utils/RouteUtils":220,"./utils/SocketUtils":221,"react":200,"react-router":32}],206:[function(require,module,exports){
 var React = require('react');
 var ChatMessageList = require('./ChatMessageList');
 var FileUpload = require('./FileUpload');
@@ -25178,7 +25185,7 @@ var ChatClient = React.createClass({displayName: "ChatClient",
 module.exports = ChatClient;
 
 
-},{"./ChatFileList":207,"./ChatMessageList":209,"./FileUpload":212,"react":200}],206:[function(require,module,exports){
+},{"./ChatFileList":208,"./ChatMessageList":210,"./FileUpload":213,"react":200}],207:[function(require,module,exports){
 var React = require('react');
 
 var ChatFile = React.createClass({displayName: "ChatFile",
@@ -25216,7 +25223,7 @@ var ChatFile = React.createClass({displayName: "ChatFile",
 module.exports = ChatFile;
 
 
-},{"react":200}],207:[function(require,module,exports){
+},{"react":200}],208:[function(require,module,exports){
 var ChatFile = require('./ChatFile');
 var FileStore = require('../stores/FileStore');
 var React = require('react');
@@ -25238,7 +25245,7 @@ var ChatFileList = React.createClass({displayName: "ChatFileList",
     $(".files-list").height(document.documentElement.clientHeight);
   },
   componentWillUnmount: function() {
-    FileStore.removeListener(this._onChange); 
+    FileStore.removeChangeListener(this._onChange); 
   },
   _onChange: function() {      
     this.setState(fetchState());
@@ -25265,7 +25272,7 @@ var ChatFileList = React.createClass({displayName: "ChatFileList",
 module.exports = ChatFileList;
 
 
-},{"../stores/FileStore":217,"../utils/RouteUtils":219,"./ChatFile":206,"react":200}],208:[function(require,module,exports){
+},{"../stores/FileStore":218,"../utils/RouteUtils":220,"./ChatFile":207,"react":200}],209:[function(require,module,exports){
 var React = require('react');
 
 var ChatMessage = React.createClass({displayName: "ChatMessage",
@@ -25302,7 +25309,7 @@ var ChatMessage = React.createClass({displayName: "ChatMessage",
 module.exports = ChatMessage;
 
 
-},{"react":200}],209:[function(require,module,exports){
+},{"react":200}],210:[function(require,module,exports){
 var ChatMessage = require('./ChatMessage');
 var MessageStore = require('../stores/MessageStore');
 var React = require('react');
@@ -25324,7 +25331,7 @@ var ChatMessageList = React.createClass({displayName: "ChatMessageList",
     $(".messages-list").height(document.documentElement.clientHeight - 140);
   },
   componentWillUnmount: function() {
-    MessageStore.removeListener(this._onChange); 
+    MessageStore.removeChangeListener(this._onChange); 
   },
   _onChange: function() {      
     this.setState(fetchState());    
@@ -25360,11 +25367,13 @@ module.exports = ChatMessageList;
 
 
 
-},{"../stores/MessageStore":218,"../utils/RouteUtils":219,"./ChatMessage":208,"react":200}],210:[function(require,module,exports){
+},{"../stores/MessageStore":219,"../utils/RouteUtils":220,"./ChatMessage":209,"react":200}],211:[function(require,module,exports){
 var React = require('react');
+var ViewActions = require('../actions/ViewActions.js');
 
 function fetchState() {
   return {
+    query: ''
   }
 } 
 
@@ -25379,9 +25388,17 @@ var CourseSearchBar = React.createClass({displayName: "CourseSearchBar",
   _onChange: function() {      
     this.setState(fetchState());    
   },  
+  handleChange: function(e) {
+    this.setState({query: e.target.value});
+    ViewActions.searchDepts(e.target.value);
+  },
   render: function() {         
     return (
-      React.createElement("input", {className: "course-search-input"})
+      React.createElement("input", {
+        value: this.state.username, 
+        className: "course-search-input", 
+        onChange: this.handleChange}
+        )
     );
   },
   componentDidUpdate: function() {
@@ -25393,34 +25410,49 @@ module.exports = CourseSearchBar;
 
 
 
-},{"react":200}],211:[function(require,module,exports){
+},{"../actions/ViewActions.js":203,"react":200}],212:[function(require,module,exports){
+var CourseStore = require('../stores/CourseStore');
 var React = require('react');
+var ViewActions = require('../actions/ViewActions');
 
-function fetchState() {
+function fetchState(dept) {
+  var deptCourses = CourseStore.getCoursesForDept(dept);
   return {
+    courses: deptCourses
   }
 } 
 
 // Props contains dept
 var DeptLink = React.createClass({displayName: "DeptLink",
   getInitialState: function() {
-    return fetchState();       
+    return fetchState(this.props.dept);       
   },
   componentDidMount: function() { 
+    CourseStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function() {
+    CourseStore.removeChangeListener(this._onChange); 
   },
   _onChange: function() {      
-    this.setState(fetchState());    
+    this.setState(fetchState(this.props.dept));
   },  
   handleClick: function() {
     // Here, we want to expand this tab.
-    console.log('hello');
+    ViewActions.fetchCoursesForDept(this.props.dept.toUpperCase());
   },
   render: function() {
+    var courses = this.state.courses.map(function(course) {
+      return (
+        React.createElement("li", null, 
+          course.course
+        )
+      );
+    }); 
+
     return (
-      React.createElement("li", {onClick: this.handleClick}, 
-        this.props.dept
+      React.createElement("li", {key: this.props.dept, onClick: this.handleClick}, 
+        this.props.dept, 
+        courses
       )
     );
   }
@@ -25429,7 +25461,7 @@ var DeptLink = React.createClass({displayName: "DeptLink",
 module.exports = DeptLink;
 
 
-},{"react":200}],212:[function(require,module,exports){
+},{"../actions/ViewActions":203,"../stores/CourseStore":217,"react":200}],213:[function(require,module,exports){
 var React = require('react');
 var MessageStore = require('../stores/MessageStore');
 var CourseStore = require('../stores/CourseStore');
@@ -25493,7 +25525,7 @@ var FileUpload = React.createClass({displayName: "FileUpload",
 module.exports = FileUpload;
 
 
-},{"../stores/CourseStore":216,"../stores/MessageStore":218,"react":200}],213:[function(require,module,exports){
+},{"../stores/CourseStore":217,"../stores/MessageStore":219,"react":200}],214:[function(require,module,exports){
 var React = require('react');
 var AppAPI = require('../api/AppAPI');
 var CourseStore = require('../stores/CourseStore');
@@ -25538,7 +25570,6 @@ var Footer = React.createClass({displayName: "Footer",
       var course = RouteUtils.currentCourse();
       var thiz = this;
       AppAPI.createMessage(course.id, message, function(result) {
-        console.log("clearning userInput");
         thiz.setState({userInput: ''}); 
       });
     }
@@ -25578,7 +25609,7 @@ var Footer = React.createClass({displayName: "Footer",
 module.exports = Footer;
 
 
-},{"../api/AppAPI":203,"../stores/CourseStore":216,"../utils/RouteUtils":219,"react":200}],214:[function(require,module,exports){
+},{"../api/AppAPI":204,"../stores/CourseStore":217,"../utils/RouteUtils":220,"react":200}],215:[function(require,module,exports){
 var keymirror = require('keymirror');                                                                                                                                              
 module.exports = {             
   ActionTypes: keymirror({     
@@ -25588,7 +25619,8 @@ module.exports = {
     RECEIVE_FILE: null,
     RECEIVE_FILES: null,
     RECEIVE_MESSAGES: null,
-    RECEIVE_MESSAGE: null
+    RECEIVE_MESSAGE: null,
+    SEARCH_DEPTS: null
   }),
 
   PayloadSources: keymirror({
@@ -25598,7 +25630,7 @@ module.exports = {
 }
 
 
-},{"keymirror":6}],215:[function(require,module,exports){
+},{"keymirror":6}],216:[function(require,module,exports){
 var Dispatcher = require('flux').Dispatcher;
 
 var assign = require('object-assign');
@@ -25626,7 +25658,7 @@ var AppDispatcher = assign(new Dispatcher(), {
 module.exports = AppDispatcher;
 
 
-},{"../constants/Constants.js":214,"flux":3,"object-assign":7}],216:[function(require,module,exports){
+},{"../constants/Constants.js":215,"flux":3,"object-assign":7}],217:[function(require,module,exports){
 var _ = require('underscore');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
@@ -25637,6 +25669,7 @@ var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 var courses = [];
 var depts = [];
+var currentQuery = "";
           
 var CourseStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function(callback) {
@@ -25654,13 +25687,30 @@ var CourseStore = assign({}, EventEmitter.prototype, {
   getAllDepts: function() {
     return depts; 
   },
+  getFilteredDepts: function() {
+    var filteredDepts = depts.filter(function(dept) {
+      return belongsIn(dept, currentQuery);
+    });
+    return filteredDepts;
+  },
+  getCoursesForDept: function(dept) {
+    var filteredCourses = courses.filter(function(course) {
+      return course.dept.toLowerCase() == dept.toLowerCase();
+    });
+
+    return filteredCourses;
+  },
   lookupDept: function(dept) {
     return _.find(courses, function(course) {
-      return course.dept == dept;
+      return course.dept.toLowerCase() == dept.toLowerCase();
     });
-  }
-});       
-          
+  },
+});
+
+function belongsIn(dept, query) {
+  return dept.toLowerCase().indexOf(query.toLowerCase()) > -1;
+}
+
 CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.type) {
@@ -25676,6 +25726,9 @@ CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
     case ActionTypes.RECEIVE_DEPTS:
       depts = action.depts;
       break;
+    case ActionTypes.SEARCH_DEPTS:
+      currentQuery = action.query;
+      break;
   }
   CourseStore.emitChange();
 });
@@ -25683,7 +25736,7 @@ CourseStore.dispatchToken = AppDispatcher.register(function(payload) {
 function hasCourse(newCourse) {
   for (var i = 0; i < courses.length; i++) {
     var course = courses[i];
-    if (course.dept == newCourse.dept) {
+    if (course.id == newCourse.id) {
       return true;
     }
   }
@@ -25693,8 +25746,7 @@ function hasCourse(newCourse) {
 module.exports = CourseStore;
 
 
-
-},{"../constants/Constants":214,"../dispatcher/AppDispatcher":215,"events":2,"object-assign":7,"underscore":201}],217:[function(require,module,exports){
+},{"../constants/Constants":215,"../dispatcher/AppDispatcher":216,"events":2,"object-assign":7,"underscore":201}],218:[function(require,module,exports){
 var _ = require('underscore');
 var assign = require('object-assign');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -25751,7 +25803,7 @@ module.exports = FileStore;
 
 
 
-},{"../constants/Constants":214,"../dispatcher/AppDispatcher":215,"events":2,"object-assign":7,"underscore":201}],218:[function(require,module,exports){
+},{"../constants/Constants":215,"../dispatcher/AppDispatcher":216,"events":2,"object-assign":7,"underscore":201}],219:[function(require,module,exports){
 var _ = require('underscore');
 var assign = require('object-assign');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -25809,7 +25861,7 @@ module.exports = MessageStore;
 
 
 
-},{"../constants/Constants":214,"../dispatcher/AppDispatcher":215,"events":2,"object-assign":7,"underscore":201}],219:[function(require,module,exports){
+},{"../constants/Constants":215,"../dispatcher/AppDispatcher":216,"events":2,"object-assign":7,"underscore":201}],220:[function(require,module,exports){
 var CourseStore = require('../stores/CourseStore.js');
 module.exports = {
   currentCourse: function() {
@@ -25821,7 +25873,7 @@ module.exports = {
 }
 
 
-},{"../stores/CourseStore.js":216}],220:[function(require,module,exports){
+},{"../stores/CourseStore.js":217}],221:[function(require,module,exports){
 var _ = require('underscore');
 
 module.exports = {
@@ -25850,4 +25902,4 @@ module.exports = {
 }
 
 
-},{"underscore":201}]},{},[204]);
+},{"underscore":201}]},{},[205]);

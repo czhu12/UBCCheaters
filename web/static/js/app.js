@@ -18,18 +18,15 @@ var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
   
-
 var App = React.createClass({
   getInitialState: function () {
     var state = this.fetchState();
     return state;
   },
   fetchState: function() {
-    var courses = CourseStore.getAll();
-    var depts = CourseStore.getAllDepts();
+    var depts = CourseStore.getFilteredDepts();
     return {
       depts: depts,
-      courses: courses
     }
   },
   componentDidMount: function() { 
@@ -49,18 +46,6 @@ var App = React.createClass({
       );
     });
 
-    //var links = this.state.courses.map(function (course) {
-    //  return (
-    //    <div>
-    //      <li key={course.id}>
-    //        <Link
-    //          to="course"
-    //          params={{ dept: course.dept }}
-    //        >{course.dept}</Link>
-    //      </li>
-    //    </div>
-    //  );
-    //});
     return (
       <div className="App">
         <div className="row">

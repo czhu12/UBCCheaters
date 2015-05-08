@@ -19,7 +19,7 @@ var ChatFileList = React.createClass({
     $(".files-list").height(document.documentElement.clientHeight);
   },
   componentWillUnmount: function() {
-    FileStore.removeListener(this._onChange); 
+    FileStore.removeChangeListener(this._onChange); 
   },
   _onChange: function() {      
     this.setState(fetchState());
