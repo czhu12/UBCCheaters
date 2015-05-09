@@ -74,12 +74,12 @@ var Index = React.createClass({
 var routes = (
   <Route handler={App}>
     <DefaultRoute handler={Index}/>
-    <Route name="course" path="course/:dept" handler={ChatClient}/>
+    <Route name="course" path="course/:course_id" handler={ChatClient}/>
   </Route>
 );
 
 function routeChanged() {
-  
+  console.log('route changed');
 }
 
 Router.run(routes, function (Handler) {
@@ -87,6 +87,7 @@ Router.run(routes, function (Handler) {
   AppAPI.getDepts(function(depts) {
     
     ServerActionCreators.receiveAllDepts(depts);
+
     //ServerActionCreators.receiveAllCourses(courses);
     //var course = RouteUtils.currentCourse();
 

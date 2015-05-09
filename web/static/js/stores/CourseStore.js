@@ -44,6 +44,11 @@ var CourseStore = assign({}, EventEmitter.prototype, {
       return course.dept.toLowerCase() == dept.toLowerCase();
     });
   },
+  lookup: function(courseId) {
+    return _.find(courses, function(course) {
+      return course.id == parseInt(courseId, 10);
+    });
+  },
 });
 
 function belongsIn(dept, query) {

@@ -1,3 +1,4 @@
+var RouteUtils = require('../utils/RouteUtils');
 var React = require('react');
 var MessageStore = require('../stores/MessageStore');
 var CourseStore = require('../stores/CourseStore');
@@ -37,9 +38,7 @@ var FileUpload = React.createClass({
   handleUpload: function() {
   },
   getCourseId: function() {
-    var dept = this.context.router.getCurrentParams().dept;
-    var course = CourseStore.lookupDept(dept);
-
+    var course = RouteUtils.currentCourse();
     return course.id;
   },
   getCourseEndpoint: function() {

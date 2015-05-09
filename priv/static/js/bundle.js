@@ -25098,12 +25098,12 @@ var Index = React.createClass({displayName: "Index",
 var routes = (
   React.createElement(Route, {handler: App}, 
     React.createElement(DefaultRoute, {handler: Index}), 
-    React.createElement(Route, {name: "course", path: "course/:dept", handler: ChatClient})
+    React.createElement(Route, {name: "course", path: "course/:course_id", handler: ChatClient})
   )
 );
 
 function routeChanged() {
-  
+  console.log('route changed');
 }
 
 Router.run(routes, function (Handler) {
@@ -25111,6 +25111,7 @@ Router.run(routes, function (Handler) {
   AppAPI.getDepts(function(depts) {
     
     ServerActionCreators.receiveAllDepts(depts);
+
     //ServerActionCreators.receiveAllCourses(courses);
     //var course = RouteUtils.currentCourse();
 
@@ -25144,17 +25145,25 @@ socket.join('rooms:lobby', {}).receive('ok', function(channel) {
 
 
 },{"./actions/ServerActionCreators":202,"./api/AppAPI":204,"./components/ChatClient":206,"./components/ChatFileList":208,"./components/ChatMessageList":210,"./components/CourseSearchBar":211,"./components/DeptLink":212,"./components/FileUpload":213,"./components/Footer":214,"./stores/CourseStore":217,"./utils/RouteUtils":220,"./utils/SocketUtils":221,"react":200,"react-router":32}],206:[function(require,module,exports){
-var React = require('react');
+var ChatFileList = require('./ChatFileList');
 var ChatMessageList = require('./ChatMessageList');
 var FileUpload = require('./FileUpload');
-var ChatFileList = require('./ChatFileList');
+var React = require('react');
+var RouteUtils = require('../utils/RouteUtils');
 
 var ChatClient = React.createClass({displayName: "ChatClient",
+  getInitialState: function() {
+    var course = RouteUtils.currentCourse();
+
+    return {
+      course: course
+    };
+  },
   contextTypes: {
     router: React.PropTypes.func.isRequired
   },
   render: function() {
-    var dept = this.context.router.getCurrentParams().dept
+    var dept = this.state.course.dept;
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "row"}, 
@@ -25185,7 +25194,7 @@ var ChatClient = React.createClass({displayName: "ChatClient",
 module.exports = ChatClient;
 
 
-},{"./ChatFileList":208,"./ChatMessageList":210,"./FileUpload":213,"react":200}],207:[function(require,module,exports){
+},{"../utils/RouteUtils":220,"./ChatFileList":208,"./ChatMessageList":210,"./FileUpload":213,"react":200}],207:[function(require,module,exports){
 var React = require('react');
 
 var ChatFile = React.createClass({displayName: "ChatFile",
@@ -25411,6 +25420,8 @@ module.exports = CourseSearchBar;
 
 
 },{"../actions/ViewActions.js":203,"react":200}],212:[function(require,module,exports){
+var Router = require('react-router');
+var Link = Router.Link;
 var CourseStore = require('../stores/CourseStore');
 var React = require('react');
 var ViewActions = require('../actions/ViewActions');
@@ -25435,7 +25446,7 @@ var DeptLink = React.createClass({displayName: "DeptLink",
   },
   _onChange: function() {      
     this.setState(fetchState(this.props.dept));
-  },  
+  },
   handleClick: function() {
     // Here, we want to expand this tab.
     ViewActions.fetchCoursesForDept(this.props.dept.toUpperCase());
@@ -25443,8 +25454,10 @@ var DeptLink = React.createClass({displayName: "DeptLink",
   render: function() {
     var courses = this.state.courses.map(function(course) {
       return (
-        React.createElement("li", null, 
-          course.course
+        React.createElement("li", {key: course.id}, 
+          React.createElement(Link, {to: "course", params: {course_id: course.id}}, 
+            course.course
+          )
         )
       );
     }); 
@@ -25461,7 +25474,8 @@ var DeptLink = React.createClass({displayName: "DeptLink",
 module.exports = DeptLink;
 
 
-},{"../actions/ViewActions":203,"../stores/CourseStore":217,"react":200}],213:[function(require,module,exports){
+},{"../actions/ViewActions":203,"../stores/CourseStore":217,"react":200,"react-router":32}],213:[function(require,module,exports){
+var RouteUtils = require('../utils/RouteUtils');
 var React = require('react');
 var MessageStore = require('../stores/MessageStore');
 var CourseStore = require('../stores/CourseStore');
@@ -25501,9 +25515,7 @@ var FileUpload = React.createClass({displayName: "FileUpload",
   handleUpload: function() {
   },
   getCourseId: function() {
-    var dept = this.context.router.getCurrentParams().dept;
-    var course = CourseStore.lookupDept(dept);
-
+    var course = RouteUtils.currentCourse();
     return course.id;
   },
   getCourseEndpoint: function() {
@@ -25525,7 +25537,7 @@ var FileUpload = React.createClass({displayName: "FileUpload",
 module.exports = FileUpload;
 
 
-},{"../stores/CourseStore":217,"../stores/MessageStore":219,"react":200}],214:[function(require,module,exports){
+},{"../stores/CourseStore":217,"../stores/MessageStore":219,"../utils/RouteUtils":220,"react":200}],214:[function(require,module,exports){
 var React = require('react');
 var AppAPI = require('../api/AppAPI');
 var CourseStore = require('../stores/CourseStore');
@@ -25705,6 +25717,11 @@ var CourseStore = assign({}, EventEmitter.prototype, {
       return course.dept.toLowerCase() == dept.toLowerCase();
     });
   },
+  lookup: function(courseId) {
+    return _.find(courses, function(course) {
+      return course.id == parseInt(courseId, 10);
+    });
+  },
 });
 
 function belongsIn(dept, query) {
@@ -25866,9 +25883,10 @@ var CourseStore = require('../stores/CourseStore.js');
 module.exports = {
   currentCourse: function() {
     var splitUrl = window.location.href.split('/');
-    var dept = splitUrl[splitUrl.length - 1];
+    var courseId = splitUrl[splitUrl.length - 1];
 
-    return CourseStore.lookupDept(dept);
+    var foundCourse = CourseStore.lookup(courseId);
+    return foundCourse;
   }
 }
 

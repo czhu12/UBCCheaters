@@ -1,14 +1,22 @@
-var React = require('react');
+var ChatFileList = require('./ChatFileList');
 var ChatMessageList = require('./ChatMessageList');
 var FileUpload = require('./FileUpload');
-var ChatFileList = require('./ChatFileList');
+var React = require('react');
+var RouteUtils = require('../utils/RouteUtils');
 
 var ChatClient = React.createClass({
+  getInitialState: function() {
+    var course = RouteUtils.currentCourse();
+
+    return {
+      course: course
+    };
+  },
   contextTypes: {
     router: React.PropTypes.func.isRequired
   },
   render: function() {
-    var dept = this.context.router.getCurrentParams().dept
+    var dept = this.state.course.dept;
     return (
       <div>
         <div className="row">

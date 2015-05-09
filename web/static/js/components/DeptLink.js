@@ -1,3 +1,5 @@
+var Router = require('react-router');
+var Link = Router.Link;
 var CourseStore = require('../stores/CourseStore');
 var React = require('react');
 var ViewActions = require('../actions/ViewActions');
@@ -22,7 +24,7 @@ var DeptLink = React.createClass({
   },
   _onChange: function() {      
     this.setState(fetchState(this.props.dept));
-  },  
+  },
   handleClick: function() {
     // Here, we want to expand this tab.
     ViewActions.fetchCoursesForDept(this.props.dept.toUpperCase());
@@ -30,8 +32,10 @@ var DeptLink = React.createClass({
   render: function() {
     var courses = this.state.courses.map(function(course) {
       return (
-        <li>
-          {course.course}
+        <li key={course.id}>
+          <Link to="course" params={{course_id: course.id}}>
+            {course.course}
+          </Link>
         </li>
       );
     }); 
