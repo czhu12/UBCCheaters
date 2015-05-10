@@ -25,8 +25,9 @@ var CourseSearchBar = React.createClass({
   render: function() {         
     return (
       <input 
+        type="text"
         value={this.state.username} 
-        className="course-search-input"
+        className="course-search-input style-5"
         onChange={this.handleChange}
         />
     );

@@ -29,4 +29,10 @@ module.exports = {
       callback(result);
     });
   },
+  getCourse: function(courseId, callback) {
+    var route = '/api/courses/' + courseId;
+    $.getJSON(route, function(result) {
+      callback(result);
+    });
+  }
 };

@@ -41,8 +41,12 @@ var App = React.createClass({
   },  
   render: function () {
     var depts = this.state.depts.map(function(dept) {
+      var deptCourses = CourseStore.getCoursesForDept(dept);
       return (
-        <DeptLink dept={dept}/>
+        <DeptLink 
+          key={dept} 
+          courses={deptCourses} 
+          dept={dept}/>
       );
     });
 
@@ -55,7 +59,7 @@ var App = React.createClass({
               {depts}
             </ul>
             <div className="Detail col-md-11">
-              <RouteHandler/>
+              <RouteHandler />
             </div>
           </div>
           <Footer/>
@@ -78,30 +82,29 @@ var routes = (
   </Route>
 );
 
-function routeChanged() {
-  console.log('route changed');
-}
-
 Router.run(routes, function (Handler) {
-  routeChanged();
   AppAPI.getDepts(function(depts) {
-    
     ServerActionCreators.receiveAllDepts(depts);
+    if (RouteUtils.isCourseRoute()) {
+      var courseId = RouteUtils.getCourseId();
 
-    //ServerActionCreators.receiveAllCourses(courses);
-    //var course = RouteUtils.currentCourse();
+      AppAPI.getCourse(courseId, function(course) {
+        console.log(course);
+        ServerActionCreators.receiveAllCourses([course]);
 
-    //if (course) {
-    //  AppAPI.getMessages(course.id, function(messages) {
-    //    ServerActionCreators.receiveAllMessages(messages);
-    //  });
+        AppAPI.getMessages(course.id, function(messages) {
+          ServerActionCreators.receiveAllMessages(messages);
+        });
 
-    //  AppAPI.getFiles(course.id, function(files) {
-    //    ServerActionCreators.receiveAllFiles(files);
-    //  });
-    //}
+        AppAPI.getFiles(course.id, function(files) {
+          ServerActionCreators.receiveAllFiles(files);
+        });
 
-    React.render(<Handler/>, document.getElementById('content'));
+        React.render(<Handler/>, document.getElementById('content'));
+      });
+    } else {
+      React.render(<Handler/>, document.getElementById('content'));
+    }
   });
 });
 

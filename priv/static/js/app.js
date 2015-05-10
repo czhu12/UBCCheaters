@@ -207,7 +207,14 @@ module.exports = {
     $.post("/api/courses/" + courseId + "/messages", message, function (result) {
       callback(result);
     });
-  } };});
+  },
+  getCourse: function getCourse(courseId, callback) {
+    var route = "/api/courses/" + courseId;
+    $.getJSON(route, function (result) {
+      callback(result);
+    });
+  }
+};});
 
 require.register("web/static/js/app", function(exports, require, module) {
 "use strict";
@@ -256,7 +263,11 @@ var App = React.createClass({
   },
   render: function render() {
     var depts = this.state.depts.map(function (dept) {
-      return React.createElement(DeptLink, { dept: dept });
+      var deptCourses = CourseStore.getCoursesForDept(dept);
+      return React.createElement(DeptLink, {
+        key: dept,
+        courses: deptCourses,
+        dept: dept });
     });
 
     return React.createElement(
@@ -305,30 +316,29 @@ var routes = React.createElement(
   React.createElement(Route, { name: "course", path: "course/:course_id", handler: ChatClient })
 );
 
-function routeChanged() {
-  console.log("route changed");
-}
-
 Router.run(routes, function (Handler) {
-  routeChanged();
   AppAPI.getDepts(function (depts) {
-
     ServerActionCreators.receiveAllDepts(depts);
+    if (RouteUtils.isCourseRoute()) {
+      var courseId = RouteUtils.getCourseId();
 
-    //ServerActionCreators.receiveAllCourses(courses);
-    //var course = RouteUtils.currentCourse();
+      AppAPI.getCourse(courseId, function (course) {
+        console.log(course);
+        ServerActionCreators.receiveAllCourses([course]);
 
-    //if (course) {
-    //  AppAPI.getMessages(course.id, function(messages) {
-    //    ServerActionCreators.receiveAllMessages(messages);
-    //  });
+        AppAPI.getMessages(course.id, function (messages) {
+          ServerActionCreators.receiveAllMessages(messages);
+        });
 
-    //  AppAPI.getFiles(course.id, function(files) {
-    //    ServerActionCreators.receiveAllFiles(files);
-    //  });
-    //}
+        AppAPI.getFiles(course.id, function (files) {
+          ServerActionCreators.receiveAllFiles(files);
+        });
 
-    React.render(React.createElement(Handler, null), document.getElementById("content"));
+        React.render(React.createElement(Handler, null), document.getElementById("content"));
+      });
+    } else {
+      React.render(React.createElement(Handler, null), document.getElementById("content"));
+    }
   });
 });
 
@@ -370,6 +380,7 @@ var ChatClient = React.createClass({
   },
   render: function render() {
     var dept = this.state.course.dept;
+    var courseNumber = this.state.course.course;
     return React.createElement(
       "div",
       null,
@@ -385,7 +396,9 @@ var ChatClient = React.createClass({
             React.createElement(
               "h3",
               null,
-              dept
+              dept,
+              " ",
+              courseNumber
             ),
             React.createElement(ChatMessageList, null)
           )
@@ -676,8 +689,9 @@ var CourseSearchBar = React.createClass({
   },
   render: function render() {
     return React.createElement("input", {
+      type: "text",
       value: this.state.username,
-      className: "course-search-input",
+      className: "course-search-input style-5",
       onChange: this.handleChange
     });
   },
@@ -708,12 +722,8 @@ var DeptLink = React.createClass({
   getInitialState: function getInitialState() {
     return fetchState(this.props.dept);
   },
-  componentDidMount: function componentDidMount() {
-    CourseStore.addChangeListener(this._onChange);
-  },
-  componentWillUnmount: function componentWillUnmount() {
-    CourseStore.removeChangeListener(this._onChange);
-  },
+  componentDidMount: function componentDidMount() {},
+  componentWillUnmount: function componentWillUnmount() {},
   _onChange: function _onChange() {
     this.setState(fetchState(this.props.dept));
   },
@@ -722,7 +732,7 @@ var DeptLink = React.createClass({
     ViewActions.fetchCoursesForDept(this.props.dept.toUpperCase());
   },
   render: function render() {
-    var courses = this.state.courses.map(function (course) {
+    var courses = this.props.courses.map(function (course) {
       return React.createElement(
         "li",
         { key: course.id },
@@ -733,17 +743,30 @@ var DeptLink = React.createClass({
         )
       );
     });
+    var course = this.props.courses[0];
+    var courseLink;
+    if (course) {
+      courseLink = React.createElement(
+        Link,
+        { to: "course", params: { course_id: course.id } },
+        course.course
+      );
+    }
 
     return React.createElement(
       "li",
       { key: this.props.dept, onClick: this.handleClick },
       this.props.dept,
-      courses
+      courseLink
     );
   }
 });
 
-module.exports = DeptLink;});
+module.exports = DeptLink;
+
+//CourseStore.addChangeListener(this._onChange);
+
+//CourseStore.removeChangeListener(this._onChange);});
 
 require.register("web/static/js/components/FileUpload", function(exports, require, module) {
 "use strict";
@@ -1179,6 +1202,16 @@ module.exports = {
 
     var foundCourse = CourseStore.lookup(courseId);
     return foundCourse;
+  },
+  isCourseRoute: function isCourseRoute() {
+    var splitUrl = window.location.href.split("/");
+    return splitUrl[splitUrl.length - 2].indexOf("course") > -1;
+  },
+  getCourseId: function getCourseId() {
+    var splitUrl = window.location.href.split("/");
+    var courseId = splitUrl[splitUrl.length - 1];
+
+    return courseId;
   }
 };});
 

@@ -31,7 +31,7 @@ defmodule Chatty.CourseController do
 
   def show(conn, %{"id" => id}) do
     course = Repo.get(Course, id)
-    render conn, "show.html", course: course
+    render conn, course: course
   end
 
   def edit(conn, %{"id" => id}) do
