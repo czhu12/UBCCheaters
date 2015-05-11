@@ -6,7 +6,10 @@ var ViewActions = require('../actions/ViewActions.js');
 
 var CourseList = React.createClass({
   componentDidMount: function() { 
-    $(".course-list").height(document.documentElement.clientHeight - 140);
+    $(".course-list").height(document.documentElement.clientHeight);
+    $(window).resize(function() {
+      $(".course-list").height(document.documentElement.clientHeight);
+    });
   },
   componentWillUnmount: function() {
   },
@@ -30,8 +33,8 @@ var CourseList = React.createClass({
 
     return (
       <div className="course-list-container">
-        <CourseSearchBar />
         <ul className="course-list">
+          <CourseSearchBar />
           {depts}
         </ul>
       </div>

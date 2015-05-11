@@ -28,7 +28,6 @@ var ChatClient = React.createClass({
         <div className="row">
           <div className="col-xs-8 col-sm-8 col-md-8">
             <div className="comment-box">
-              <h3>{dept} {courseNumber}</h3>
               <ChatMessageList />
             </div>
           </div>

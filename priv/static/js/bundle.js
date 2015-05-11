@@ -25071,28 +25071,15 @@ var App = React.createClass({displayName: "App",
     this.setState(this.fetchState());    
   },  
   render: function () {
-    var depts = this.state.depts.map(function(dept) {
-      var deptCourses = CourseStore.getCoursesForDept(dept);
-      return (
-        React.createElement(DeptLink, {
-          key: dept, 
-          courses: deptCourses, 
-          dept: dept})
-      );
-    });
-
     return (
       React.createElement("div", {className: "App"}, 
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "container"}, 
-            React.createElement("ul", {className: "Master classes-list col-md-1"}, 
-              React.createElement(CourseList, {depts: this.state.depts})
-            ), 
-            React.createElement("div", {className: "Detail col-md-11"}, 
-              React.createElement(RouteHandler, null)
-            )
+          React.createElement("ul", {className: "Master classes-list hidden-xs col-md-2 col-sm-2 col-lg-2"}, 
+            React.createElement(CourseList, {depts: this.state.depts})
           ), 
-          React.createElement(Footer, null)
+          React.createElement("div", {className: "Detail col-md-10 col-sm-10 col-lg-10"}, 
+            React.createElement(RouteHandler, null)
+          )
         )
       )
     );
@@ -25186,7 +25173,6 @@ var ChatClient = React.createClass({displayName: "ChatClient",
         React.createElement("div", {className: "row"}, 
           React.createElement("div", {className: "col-xs-8 col-sm-8 col-md-8"}, 
             React.createElement("div", {className: "comment-box"}, 
-              React.createElement("h3", null, dept, " ", courseNumber), 
               React.createElement(ChatMessageList, null)
             )
           ), 
@@ -25354,7 +25340,10 @@ var ChatMessageList = React.createClass({displayName: "ChatMessageList",
   },
   componentDidMount: function() { 
     MessageStore.addChangeListener(this._onChange);
-    $(".messages-list").height(document.documentElement.clientHeight - 240);
+    $(".messages-list").height(document.documentElement.clientHeight);
+    $(window).resize(function() {
+      $(".messages-list").height(document.documentElement.clientHeight);
+    });
   },
   componentWillUnmount: function() {
     MessageStore.removeChangeListener(this._onChange); 
@@ -25402,7 +25391,10 @@ var ViewActions = require('../actions/ViewActions.js');
 
 var CourseList = React.createClass({displayName: "CourseList",
   componentDidMount: function() { 
-    $(".course-list").height(document.documentElement.clientHeight - 140);
+    $(".course-list").height(document.documentElement.clientHeight);
+    $(window).resize(function() {
+      $(".course-list").height(document.documentElement.clientHeight);
+    });
   },
   componentWillUnmount: function() {
   },
@@ -25426,8 +25418,8 @@ var CourseList = React.createClass({displayName: "CourseList",
 
     return (
       React.createElement("div", {className: "course-list-container"}, 
-        React.createElement(CourseSearchBar, null), 
         React.createElement("ul", {className: "course-list"}, 
+          React.createElement(CourseSearchBar, null), 
           depts
         )
       )
@@ -25467,12 +25459,16 @@ var CourseSearchBar = React.createClass({displayName: "CourseSearchBar",
   },
   render: function() {         
     return (
-      React.createElement("input", {
-        type: "text", 
-        value: this.state.username, 
-        className: "course-search-input style-5", 
-        onChange: this.handleChange}
-        )
+      React.createElement("div", {className: "course-search inner-addon left-addon"}, 
+        React.createElement("span", {className: "fa fa-search glyphicon"}), 
+        React.createElement("input", {
+          type: "text", 
+          placeholder: "Search", 
+          value: this.state.username, 
+          className: "course-search-input style-5", 
+          onChange: this.handleChange}
+          )
+      )
     );
   },
   componentDidUpdate: function() {
@@ -25521,7 +25517,7 @@ var DeptLink = React.createClass({displayName: "DeptLink",
       return (
         React.createElement("div", null, 
           React.createElement(Link, {to: "course", params: {course_id: course.id}}, 
-            course.course
+            React.createElement("div", {className: "course-course"}, course.course)
           )
         )
       );
@@ -25529,7 +25525,7 @@ var DeptLink = React.createClass({displayName: "DeptLink",
 
     return (
       React.createElement("li", {key: this.props.dept, onClick: this.handleClick}, 
-        this.props.dept, 
+        React.createElement("div", {className: "course-dept"}, this.props.dept), 
         courses
       )
     );
@@ -25654,28 +25650,27 @@ var Footer = React.createClass({displayName: "Footer",
   render: function() {         
     return (
       React.createElement("div", {id: "footer"}, 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-sm-2"}, 
-              React.createElement("div", {className: "input-group"}, 
-                React.createElement("span", {className: "input-group-addon"}, "@"), 
-                React.createElement("input", {
-                  id: "username", 
-                  value: this.state.username, 
-                  onChange: this.handleUsernameChange, 
-                  type: "text", 
-                  className: "form-control", 
-                  placeholder: "anonymous"})
-              )
-            ), 
-            React.createElement("div", {className: "col-sm-10"}, 
+        React.createElement("div", {className: "row"}, 
+          React.createElement("div", {className: "col-sm-2"}), 
+          React.createElement("div", {className: "col-sm-2"}, 
+            React.createElement("div", {className: "input-group"}, 
+              React.createElement("span", {className: "input-group-addon"}, "@"), 
               React.createElement("input", {
-                id: "message-input", 
-                value: this.state.userInput, 
-                onChange: this.handleChange, 
-                onKeyDown: this.keyPressed, 
-                className: "form-control"})
+                id: "username", 
+                value: this.state.username, 
+                onChange: this.handleUsernameChange, 
+                type: "text", 
+                className: "form-control", 
+                placeholder: "anonymous"})
             )
+          ), 
+          React.createElement("div", {className: "col-sm-8"}, 
+            React.createElement("input", {
+              id: "message-input", 
+              value: this.state.userInput, 
+              onChange: this.handleChange, 
+              onKeyDown: this.keyPressed, 
+              className: "form-control"})
           )
         )
       )

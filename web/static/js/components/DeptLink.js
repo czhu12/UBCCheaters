@@ -34,7 +34,7 @@ var DeptLink = React.createClass({
       return (
         <div>
           <Link to="course" params={{course_id: course.id}}>
-            {course.course}
+            <div className="course-course">{course.course}</div>
           </Link>
         </div>
       );
@@ -42,7 +42,7 @@ var DeptLink = React.createClass({
 
     return (
       <li key={this.props.dept} onClick={this.handleClick}>
-        {this.props.dept}
+        <div className="course-dept">{this.props.dept}</div>
         {courses}
       </li>
     );

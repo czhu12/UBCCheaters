@@ -26,40 +26,36 @@ html, body {
   width: 220px;
   height: 100%; }
 
-/* line 16, stdin */
-.App {
-  padding-top: 10px; }
-
-/* line 19, stdin */
+/* line 17, stdin */
 #menu ul {
   height: 100%;
   overflow: auto; }
 
-/* line 24, stdin */
+/* line 22, stdin */
 html, body {
   height: 100%; }
 
-/* line 28, stdin */
+/* line 26, stdin */
 #content {
   height: 100%;
   width: 100%; }
 
-/* line 33, stdin */
+/* line 31, stdin */
 hr {
   padding: 0;
   margin: 10px; }
 
-/* line 38, stdin */
+/* line 36, stdin */
 ul {
   padding: 0;
   margin: 0; }
 
-/* line 43, stdin */
+/* line 41, stdin */
 li {
   padding: 0;
   margin: 0; }
 
-/* line 48, stdin */
+/* line 46, stdin */
 #footer {
   position: fixed;
   bottom: 0px;
@@ -69,88 +65,139 @@ li {
   padding-top: 1em;
   background-color: #f5f5f5; }
 
-/* line 58, stdin */
+/* line 56, stdin */
 .files-container {
   height: 100%;
   overflow-y: auto; }
 
-/* line 63, stdin */
+/* line 61, stdin */
 .message-user {
   margin-right: 10px; }
 
-/* line 67, stdin */
+/* line 65, stdin */
 .file-link {
   font-size: 0.8em;
   cursor: pointer; }
 
-/* line 72, stdin */
+/* line 70, stdin */
 .message-divider {
   border-color: #34495e; }
 
-/* line 76, stdin */
+/* line 74, stdin */
 .messages-container {
   height: 100%; }
 
-/* line 80, stdin */
+/* line 78, stdin */
 .messages-list {
   height: 80%;
   overflow: auto; }
 
-/* line 85, stdin */
+/* line 83, stdin */
 .file-upload {
   margin-bottom: 15px; }
 
-/* line 89, stdin */
+/* line 87, stdin */
 hr.style-six {
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
-/* line 96, stdin */
+/* line 94, stdin */
 .message {
   height: 40px; }
 
-/* line 100, stdin */
+/* line 98, stdin */
 .Detail {
   height: 100%; }
 
-/* line 104, stdin */
+/* line 102, stdin */
 .comment-box {
   height: 100%; }
 
-/* line 107, stdin */
-.classes-list {
-  padding-top: 50px; }
-
-/* line 111, stdin */
+/* line 106, stdin */
 .files-box {
   padding-top: 50px; }
 
-/* line 115, stdin */
+/* line 110, stdin */
 .course-search-input {
-  border-radius: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  margin-bottom: 5px;
   width: 100%; }
 
-/* line 119, stdin */
+/* line 117, stdin */
 .style-5 input[type="text"] {
   padding: 10px;
   border: solid 1px #fff;
   box-shadow: inset 1px 1px 2px 0 #707070;
   transition: box-shadow 0.3s; }
 
-/* line 126, stdin */
+/* line 124, stdin */
 .style-5 input[type="text"]:focus, .style-5 input[type="text"].focus {
   box-shadow: inset 1px 1px 2px 0 #c9c9c9; }
 
-/* line 130, stdin */
+/* line 128, stdin */
 .course-list-container {
-  height: 100%; }
+  height: 100%;
+  padding-left: 30px; }
 
-/* line 134, stdin */
+/* line 133, stdin */
 .course-list {
-  height: 70%;
+  height: 80%;
   overflow: auto; }
+
+/* line 138, stdin */
+.course-course {
+  padding-left: 10px; }
+
+/* line 142, stdin */
+.course-dept {
+  cursor: pointer; }
+
+/* line 146, stdin */
+.course-dept:hover {
+  background-color: blue;
+  color: white; }
+
+/* line 151, stdin */
+.inner-addon {
+  position: relative; }
+
+/* style icon */
+/* line 156, stdin */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none; }
+
+/* align icon */
+/* line 163, stdin */
+.left-addon .glyphicon {
+  left: 0px; }
+
+/* line 164, stdin */
+.right-addon .glyphicon {
+  right: 0px; }
+
+/* add padding  */
+/* line 167, stdin */
+.left-addon input {
+  padding-left: 30px; }
+
+/* line 168, stdin */
+.right-addon input {
+  padding-right: 30px; }
+
+/* line 170, stdin */
+.course-search > .glyphicon {
+  color: #999; }
+
+/* line 174, stdin */
+.comment-box > h3 {
+  margin: 0;
+  padding: 0; }
 
 
 /*# sourceMappingURL=app.css.map*/

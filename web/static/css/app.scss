@@ -13,9 +13,7 @@ html, body{
     width:220px;
     height:100%;
 }
-.App {
-  padding-top: 10px;
-}
+
 #menu ul {
     height: 100%;
     overflow: auto;
@@ -104,16 +102,16 @@ hr.style-six {
 .comment-box {
   height: 100%;
 }
-.classes-list {
-  padding-top: 50px;
-}
 
 .files-box {
   padding-top: 50px;
 }
 
 .course-search-input {
-  border-radius: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  margin-bottom: 5px;
   width: 100%;
 }
 .style-5 input[type="text"] {
@@ -129,9 +127,52 @@ hr.style-six {
 
 .course-list-container {
   height: 100%;
+  padding-left: 30px;
 }
 
 .course-list {
-  height: 70%;
+  height: 80%;
   overflow: auto;
 }
+
+.course-course {
+  padding-left: 10px;
+}
+
+.course-dept {
+  cursor: pointer;
+}
+
+.course-dept:hover {
+  background-color: blue;
+  color: white;
+}
+
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.course-search > .glyphicon {
+  color: #999;
+}
+
+.comment-box > h3 {
+  margin: 0;
+  padding: 0;
+}
+

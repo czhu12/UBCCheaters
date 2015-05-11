@@ -49,28 +49,27 @@ var Footer = React.createClass({
   render: function() {         
     return (
       <div id="footer"> 
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-2">
-              <div className="input-group">
-                <span className="input-group-addon">@</span>
-                <input 
-                  id="username" 
-                  value={this.state.username} 
-                  onChange={this.handleUsernameChange} 
-                  type="text" 
-                  className="form-control" 
-                  placeholder="anonymous" />
-              </div>
-            </div>
-            <div className="col-sm-10">
+        <div className="row">
+          <div className="col-sm-2"></div>
+          <div className="col-sm-2">
+            <div className="input-group">
+              <span className="input-group-addon">@</span>
               <input 
-                id="message-input" 
-                value={this.state.userInput} 
-                onChange={this.handleChange} 
-                onKeyDown={this.keyPressed} 
-                className="form-control" />
+                id="username" 
+                value={this.state.username} 
+                onChange={this.handleUsernameChange} 
+                type="text" 
+                className="form-control" 
+                placeholder="anonymous" />
             </div>
+          </div>
+          <div className="col-sm-8">
+            <input 
+              id="message-input" 
+              value={this.state.userInput} 
+              onChange={this.handleChange} 
+              onKeyDown={this.keyPressed} 
+              className="form-control" />
           </div>
         </div>
       </div>

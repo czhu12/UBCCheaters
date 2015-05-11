@@ -41,28 +41,15 @@ var App = React.createClass({
     this.setState(this.fetchState());    
   },  
   render: function () {
-    var depts = this.state.depts.map(function(dept) {
-      var deptCourses = CourseStore.getCoursesForDept(dept);
-      return (
-        <DeptLink 
-          key={dept} 
-          courses={deptCourses} 
-          dept={dept}/>
-      );
-    });
-
     return (
       <div className="App">
         <div className="row">
-          <div className="container">
-            <ul className="Master classes-list col-md-1">
-              <CourseList depts={this.state.depts}/>
-            </ul>
-            <div className="Detail col-md-11">
-              <RouteHandler />
-            </div>
+          <ul className="Master classes-list hidden-xs col-md-2 col-sm-2 col-lg-2">
+            <CourseList depts={this.state.depts}/>
+          </ul>
+          <div className="Detail col-md-10 col-sm-10 col-lg-10">
+            <RouteHandler />
           </div>
-          <Footer/>
         </div>
       </div>
     );
