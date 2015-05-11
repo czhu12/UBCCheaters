@@ -32,28 +32,18 @@ var DeptLink = React.createClass({
   render: function() {
     var courses = this.props.courses.map(function(course) {
       return (
-        <li key={course.id}>
+        <div>
           <Link to="course" params={{course_id: course.id}}>
             {course.course}
           </Link>
-        </li>
+        </div>
       );
     }); 
-    var course = this.props.courses[0];
-    var courseLink;
-    if (course) {
-      courseLink = (
-        <div>
-          <Link to="course" params={{course_id: course.id}}>{course.course}
-          </Link>
-        <div>
-      );
-    }
 
     return (
       <li key={this.props.dept} onClick={this.handleClick}>
         {this.props.dept}
-        {courseLink}
+        {courses}
       </li>
     );
   }

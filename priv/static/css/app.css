@@ -143,5 +143,14 @@ hr.style-six {
 .style-5 input[type="text"]:focus, .style-5 input[type="text"].focus {
   box-shadow: inset 1px 1px 2px 0 #c9c9c9; }
 
+/* line 130, stdin */
+.course-list-container {
+  height: 100%; }
+
+/* line 134, stdin */
+.course-list {
+  height: 70%;
+  overflow: auto; }
+
 
 /*# sourceMappingURL=app.css.map*/

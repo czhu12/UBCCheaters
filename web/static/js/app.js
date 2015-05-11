@@ -2,6 +2,7 @@ var AppAPI = require('./api/AppAPI');
 var React = require('react');
 var ChatMessageList = require('./components/ChatMessageList');
 var ChatFileList = require('./components/ChatFileList');
+var CourseList = require('./components/CourseList');
 var CourseSearchBar = require('./components/CourseSearchBar');
 var DeptLink = require('./components/DeptLink');
 var ServerActionCreators = require('./actions/ServerActionCreators');
@@ -55,8 +56,7 @@ var App = React.createClass({
         <div className="row">
           <div className="container">
             <ul className="Master classes-list col-md-1">
-              <CourseSearchBar />
-              {depts}
+              <CourseList depts={this.state.depts}/>
             </ul>
             <div className="Detail col-md-11">
               <RouteHandler />
@@ -89,7 +89,9 @@ Router.run(routes, function (Handler) {
       var courseId = RouteUtils.getCourseId();
 
       AppAPI.getCourse(courseId, function(course) {
-        console.log(course);
+        AppAPI.getCourses(course.dept, function(courses) {
+          ServerActionCreators.receiveAllCourses(courses);
+        });
         ServerActionCreators.receiveAllCourses([course]);
 
         AppAPI.getMessages(course.id, function(messages) {

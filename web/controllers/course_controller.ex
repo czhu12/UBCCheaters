@@ -14,19 +14,32 @@ defmodule Chatty.CourseController do
   end
 
   def meta(conn, params) do
-    query = from c in Course, group_by: c.dept, select: c.dept
+    query = from c in Course, group_by: c.dept, select: c.dept, order_by: [asc: c.dept]
     results = Repo.all(query)
     render conn, results: results
   end
 
+  defp find_course(course_params) do
+    dept = course_params["dept"]
+    faccode = course_params["faccode"]
+    course = course_params["course"]
+    query = from c in Course, where: c.dept == ^dept and c.faccode == ^faccode and c.course == ^course
+    results = Repo.all(query)
+    !((length results) == 0)
+  end
+
   def create(conn, course_params) do
-    changeset = Course.changeset(%Course{}, course_params)
+    if find_course(course_params) do
+      render conn, changeset: %{error: "Course already exists"}
+    else
+      changeset = Course.changeset(%Course{}, course_params)
 
-    if changeset.valid? do
-      Repo.insert(changeset)
+      if changeset.valid? do
+        Repo.insert(changeset)
+      end
+
+      render conn, changeset: changeset
     end
-
-    render conn, changeset: changeset
   end
 
   def show(conn, %{"id" => id}) do

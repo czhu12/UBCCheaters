@@ -223,6 +223,7 @@ var AppAPI = require("./api/AppAPI");
 var React = require("react");
 var ChatMessageList = require("./components/ChatMessageList");
 var ChatFileList = require("./components/ChatFileList");
+var CourseList = require("./components/CourseList");
 var CourseSearchBar = require("./components/CourseSearchBar");
 var DeptLink = require("./components/DeptLink");
 var ServerActionCreators = require("./actions/ServerActionCreators");
@@ -282,8 +283,7 @@ var App = React.createClass({
           React.createElement(
             "ul",
             { className: "Master classes-list col-md-1" },
-            React.createElement(CourseSearchBar, null),
-            depts
+            React.createElement(CourseList, { depts: this.state.depts })
           ),
           React.createElement(
             "div",
@@ -323,7 +323,9 @@ Router.run(routes, function (Handler) {
       var courseId = RouteUtils.getCourseId();
 
       AppAPI.getCourse(courseId, function (course) {
-        console.log(course);
+        AppAPI.getCourses(course.dept, function (courses) {
+          ServerActionCreators.receiveAllCourses(courses);
+        });
         ServerActionCreators.receiveAllCourses([course]);
 
         AppAPI.getMessages(course.id, function (messages) {
@@ -359,28 +361,32 @@ socket.join("rooms:lobby", {}).receive("ok", function (channel) {
 require.register("web/static/js/components/ChatClient", function(exports, require, module) {
 "use strict";
 
+var CourseStore = require("../stores/CourseStore");
 var ChatFileList = require("./ChatFileList");
 var ChatMessageList = require("./ChatMessageList");
 var FileUpload = require("./FileUpload");
 var React = require("react");
 var RouteUtils = require("../utils/RouteUtils");
 
+function fetchState() {
+  return null;
+}
+
 var ChatClient = React.createClass({
   displayName: "ChatClient",
 
   getInitialState: function getInitialState() {
-    var course = RouteUtils.currentCourse();
-
-    return {
-      course: course
-    };
+    return fetchState();
   },
   contextTypes: {
     router: React.PropTypes.func.isRequired
   },
+  componentDidUpdate: function componentDidUpdate() {},
   render: function render() {
-    var dept = this.state.course.dept;
-    var courseNumber = this.state.course.course;
+    var courseId = this.context.router.getCurrentParams().course_id;
+    var course = CourseStore.lookup(courseId);
+    var dept = course.dept;
+    var courseNumber = course.course;
     return React.createElement(
       "div",
       null,
@@ -623,7 +629,7 @@ var ChatMessageList = React.createClass({
   },
   componentDidMount: function componentDidMount() {
     MessageStore.addChangeListener(this._onChange);
-    $(".messages-list").height(document.documentElement.clientHeight - 140);
+    $(".messages-list").height(document.documentElement.clientHeight - 240);
   },
   componentWillUnmount: function componentWillUnmount() {
     MessageStore.removeChangeListener(this._onChange);
@@ -659,6 +665,53 @@ var ChatMessageList = React.createClass({
   } });
 
 module.exports = ChatMessageList;});
+
+require.register("web/static/js/components/CourseList", function(exports, require, module) {
+"use strict";
+
+var CourseSearchBar = require("../components/CourseSearchBar");
+var CourseStore = require("../stores/CourseStore");
+var DeptLink = require("../components/DeptLink");
+var React = require("react");
+var ViewActions = require("../actions/ViewActions.js");
+
+var CourseList = React.createClass({
+  displayName: "CourseList",
+
+  componentDidMount: function componentDidMount() {
+    $(".course-list").height(document.documentElement.clientHeight - 140);
+  },
+  componentWillUnmount: function componentWillUnmount() {},
+  _onChange: function _onChange() {
+    this.setState(fetchState());
+  },
+  handleChange: function handleChange(e) {
+    this.setState({ query: e.target.value });
+    ViewActions.searchDepts(e.target.value);
+  },
+  render: function render() {
+    var depts = this.props.depts.map(function (dept) {
+      var deptCourses = CourseStore.getCoursesForDept(dept);
+      return React.createElement(DeptLink, {
+        key: dept,
+        courses: deptCourses,
+        dept: dept });
+    });
+
+    return React.createElement(
+      "div",
+      { className: "course-list-container" },
+      React.createElement(CourseSearchBar, null),
+      React.createElement(
+        "ul",
+        { className: "course-list" },
+        depts
+      )
+    );
+  },
+  componentDidUpdate: function componentDidUpdate() {} });
+
+module.exports = CourseList;});
 
 require.register("web/static/js/components/CourseSearchBar", function(exports, require, module) {
 "use strict";
@@ -734,8 +787,8 @@ var DeptLink = React.createClass({
   render: function render() {
     var courses = this.props.courses.map(function (course) {
       return React.createElement(
-        "li",
-        { key: course.id },
+        "div",
+        null,
         React.createElement(
           Link,
           { to: "course", params: { course_id: course.id } },
@@ -743,21 +796,12 @@ var DeptLink = React.createClass({
         )
       );
     });
-    var course = this.props.courses[0];
-    var courseLink;
-    if (course) {
-      courseLink = React.createElement(
-        Link,
-        { to: "course", params: { course_id: course.id } },
-        course.course
-      );
-    }
 
     return React.createElement(
       "li",
       { key: this.props.dept, onClick: this.handleClick },
       this.props.dept,
-      courseLink
+      courses
     );
   }
 });

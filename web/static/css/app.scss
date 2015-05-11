@@ -127,3 +127,11 @@ hr.style-six {
   box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
 
+.course-list-container {
+  height: 100%;
+}
+
+.course-list {
+  height: 70%;
+  overflow: auto;
+}

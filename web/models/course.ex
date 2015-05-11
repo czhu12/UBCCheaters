@@ -5,7 +5,7 @@ defmodule Chatty.Course do
     field :dept, :string
     field :faccode, :string
     field :title, :string
-    field :course, :integer
+    field :course, :string
     has_many :messages, Chatty.Message
     has_many :uploaded_files, Chatty.UploadedFile
 

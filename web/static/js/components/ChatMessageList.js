@@ -16,7 +16,7 @@ var ChatMessageList = React.createClass({
   },
   componentDidMount: function() { 
     MessageStore.addChangeListener(this._onChange);
-    $(".messages-list").height(document.documentElement.clientHeight - 140);
+    $(".messages-list").height(document.documentElement.clientHeight - 240);
   },
   componentWillUnmount: function() {
     MessageStore.removeChangeListener(this._onChange); 
