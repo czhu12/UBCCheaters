@@ -49,7 +49,7 @@ var Footer = React.createClass({
   render: function() {         
     return (
       <div id="footer"> 
-        <div className="no-padding col-md-2">
+        <div className="no-padding col-xs-2 col-sm-2 col-md-2">
           <div className="input-group">
             <span className="input-group-addon">@</span>
             <input 
@@ -61,7 +61,7 @@ var Footer = React.createClass({
               placeholder="anonymous" />
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-xs-6 col-sm-6 col-md-6">
           <input 
             id="message-input" 
             value={this.state.userInput} 

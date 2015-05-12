@@ -674,9 +674,10 @@ var CourseList = React.createClass({
   componentDidMount: function componentDidMount() {
     var paddingTop = parseInt($(".course-list-container").css("padding-top").replace("px", ""));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
+    var paddingBottom = 30;
+    $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     $(window).resize(function () {
-      $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
+      $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     });
   },
   componentWillUnmount: function componentWillUnmount() {},
@@ -954,7 +955,7 @@ var Footer = React.createClass({
       { id: "footer" },
       React.createElement(
         "div",
-        { className: "no-padding col-md-2" },
+        { className: "no-padding col-xs-2 col-sm-2 col-md-2" },
         React.createElement(
           "div",
           { className: "input-group" },
@@ -974,7 +975,7 @@ var Footer = React.createClass({
       ),
       React.createElement(
         "div",
-        { className: "col-md-6" },
+        { className: "col-xs-6 col-sm-6 col-md-6" },
         React.createElement("input", {
           id: "message-input",
           value: this.state.userInput,
