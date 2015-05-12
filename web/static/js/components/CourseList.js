@@ -6,9 +6,11 @@ var ViewActions = require('../actions/ViewActions.js');
 
 var CourseList = React.createClass({
   componentDidMount: function() { 
-    $(".course-list").height(document.documentElement.clientHeight);
+    var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
+    var searchBarHeight = 2 * $("#course-search-bar").height();
+    $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
     $(window).resize(function() {
-      $(".course-list").height(document.documentElement.clientHeight);
+      $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
     });
   },
   componentWillUnmount: function() {
@@ -33,8 +35,8 @@ var CourseList = React.createClass({
 
     return (
       <div className="course-list-container">
+        <CourseSearchBar />
         <ul className="course-list">
-          <CourseSearchBar />
           {depts}
         </ul>
       </div>

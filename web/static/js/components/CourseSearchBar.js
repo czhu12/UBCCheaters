@@ -24,15 +24,17 @@ var CourseSearchBar = React.createClass({
   },
   render: function() {         
     return (
-      <div className="course-search inner-addon left-addon">
-        <span className="fa fa-search glyphicon"></span>
-        <input 
-          type="text"
-          placeholder="Search"
-          value={this.state.username} 
-          className="course-search-input style-5"
-          onChange={this.handleChange}
-          />
+      <div id="course-search-bar">
+        <div className="course-search inner-addon left-addon">
+          <span className="fa fa-search glyphicon"></span>
+          <input 
+            type="text"
+            placeholder="Search"
+            value={this.state.username} 
+            className="course-search-input"
+            onChange={this.handleChange}
+            />
+        </div>
       </div>
     );
   },

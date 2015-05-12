@@ -1,4 +1,6 @@
+var CourseUtils = require('../utils/CourseUtils');
 var ChatMessage = require('./ChatMessage');
+var Footer = require('./Footer');
 var MessageStore = require('../stores/MessageStore');
 var React = require('react');
 var RouteUtils = require('../utils/RouteUtils');
@@ -16,9 +18,14 @@ var ChatMessageList = React.createClass({
   },
   componentDidMount: function() { 
     MessageStore.addChangeListener(this._onChange);
-    $(".messages-list").height(document.documentElement.clientHeight);
+    $(".messages-list").height(
+      document.documentElement.clientHeight - 2.5 * $("#footer").height()
+    );
+    // Do this whenever the window resizes.
     $(window).resize(function() {
-      $(".messages-list").height(document.documentElement.clientHeight);
+      $(".messages-list").height(
+        document.documentElement.clientHeight - 2.5 * $("#footer").height()
+      );
     });
   },
   componentWillUnmount: function() {
@@ -28,6 +35,7 @@ var ChatMessageList = React.createClass({
     this.setState(fetchState());    
   },  
   render: function() {         
+    var courseName = CourseUtils.courseName(this.props.course);
     var messages = this.state.messages.map(function(message, index) {
       if (index == 0) {        
         return <ChatMessage key={message.id} message={message} isFirst={true}/>
@@ -37,10 +45,20 @@ var ChatMessageList = React.createClass({
     });
 
     return (
-      <div className="messages-container"> 
-        <ul ref="chatList" className="messages-list">
-          {messages}
-        </ul>
+      <div className="col-xs-8 col-sm-8 col-md-8">
+        <div className="comment-box">
+
+          <div className="course-name">
+            {courseName}
+          </div>
+
+          <div className="messages-container"> 
+            <ul ref="chatList" className="messages-list">
+              {messages}
+            </ul>
+            <Footer/>
+          </div>
+        </div>
       </div>
     );
   },

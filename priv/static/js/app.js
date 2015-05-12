@@ -380,15 +380,7 @@ var ChatClient = React.createClass({
       React.createElement(
         "div",
         { className: "row" },
-        React.createElement(
-          "div",
-          { className: "col-xs-8 col-sm-8 col-md-8" },
-          React.createElement(
-            "div",
-            { className: "comment-box" },
-            React.createElement(ChatMessageList, null)
-          )
-        ),
+        React.createElement(ChatMessageList, { course: course }),
         React.createElement(
           "div",
           { className: "col-xs-4 col-sm-4 col-md-4" },
@@ -589,7 +581,9 @@ module.exports = ChatMessage;});
 require.register("web/static/js/components/ChatMessageList", function(exports, require, module) {
 "use strict";
 
+var CourseUtils = require("../utils/CourseUtils");
 var ChatMessage = require("./ChatMessage");
+var Footer = require("./Footer");
 var MessageStore = require("../stores/MessageStore");
 var React = require("react");
 var RouteUtils = require("../utils/RouteUtils");
@@ -609,9 +603,10 @@ var ChatMessageList = React.createClass({
   },
   componentDidMount: function componentDidMount() {
     MessageStore.addChangeListener(this._onChange);
-    $(".messages-list").height(document.documentElement.clientHeight);
+    $(".messages-list").height(document.documentElement.clientHeight - 2.5 * $("#footer").height());
+    // Do this whenever the window resizes.
     $(window).resize(function () {
-      $(".messages-list").height(document.documentElement.clientHeight);
+      $(".messages-list").height(document.documentElement.clientHeight - 2.5 * $("#footer").height());
     });
   },
   componentWillUnmount: function componentWillUnmount() {
@@ -621,6 +616,7 @@ var ChatMessageList = React.createClass({
     this.setState(fetchState());
   },
   render: function render() {
+    var courseName = CourseUtils.courseName(this.props.course);
     var messages = this.state.messages.map(function (message, index) {
       if (index == 0) {
         return React.createElement(ChatMessage, { key: message.id, message: message, isFirst: true });
@@ -631,11 +627,25 @@ var ChatMessageList = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "messages-container" },
+      { className: "col-xs-8 col-sm-8 col-md-8" },
       React.createElement(
-        "ul",
-        { ref: "chatList", className: "messages-list" },
-        messages
+        "div",
+        { className: "comment-box" },
+        React.createElement(
+          "div",
+          { className: "course-name" },
+          courseName
+        ),
+        React.createElement(
+          "div",
+          { className: "messages-container" },
+          React.createElement(
+            "ul",
+            { ref: "chatList", className: "messages-list" },
+            messages
+          ),
+          React.createElement(Footer, null)
+        )
       )
     );
   },
@@ -662,9 +672,11 @@ var CourseList = React.createClass({
   displayName: "CourseList",
 
   componentDidMount: function componentDidMount() {
-    $(".course-list").height(document.documentElement.clientHeight);
+    var paddingTop = parseInt($(".course-list-container").css("padding-top").replace("px", ""));
+    var searchBarHeight = 2 * $("#course-search-bar").height();
+    $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
     $(window).resize(function () {
-      $(".course-list").height(document.documentElement.clientHeight);
+      $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight);
     });
   },
   componentWillUnmount: function componentWillUnmount() {},
@@ -687,10 +699,10 @@ var CourseList = React.createClass({
     return React.createElement(
       "div",
       { className: "course-list-container" },
+      React.createElement(CourseSearchBar, null),
       React.createElement(
         "ul",
         { className: "course-list" },
-        React.createElement(CourseSearchBar, null),
         depts
       )
     );
@@ -729,15 +741,19 @@ var CourseSearchBar = React.createClass({
   render: function render() {
     return React.createElement(
       "div",
-      { className: "course-search inner-addon left-addon" },
-      React.createElement("span", { className: "fa fa-search glyphicon" }),
-      React.createElement("input", {
-        type: "text",
-        placeholder: "Search",
-        value: this.state.username,
-        className: "course-search-input style-5",
-        onChange: this.handleChange
-      })
+      { id: "course-search-bar" },
+      React.createElement(
+        "div",
+        { className: "course-search inner-addon left-addon" },
+        React.createElement("span", { className: "fa fa-search glyphicon" }),
+        React.createElement("input", {
+          type: "text",
+          placeholder: "Search",
+          value: this.state.username,
+          className: "course-search-input",
+          onChange: this.handleChange
+        })
+      )
     );
   },
   componentDidUpdate: function componentDidUpdate() {} });
@@ -934,38 +950,33 @@ var Footer = React.createClass({
       { id: "footer" },
       React.createElement(
         "div",
-        { className: "row" },
-        React.createElement("div", { className: "col-sm-2" }),
+        { className: "no-padding col-md-2" },
         React.createElement(
           "div",
-          { className: "col-sm-2" },
+          { className: "input-group" },
           React.createElement(
-            "div",
-            { className: "input-group" },
-            React.createElement(
-              "span",
-              { className: "input-group-addon" },
-              "@"
-            ),
-            React.createElement("input", {
-              id: "username",
-              value: this.state.username,
-              onChange: this.handleUsernameChange,
-              type: "text",
-              className: "form-control",
-              placeholder: "anonymous" })
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "col-sm-8" },
+            "span",
+            { className: "input-group-addon" },
+            "@"
+          ),
           React.createElement("input", {
-            id: "message-input",
-            value: this.state.userInput,
-            onChange: this.handleChange,
-            onKeyDown: this.keyPressed,
-            className: "form-control" })
+            id: "username",
+            value: this.state.username,
+            onChange: this.handleUsernameChange,
+            type: "text",
+            className: "form-control",
+            placeholder: "anonymous" })
         )
+      ),
+      React.createElement(
+        "div",
+        { className: "col-md-6" },
+        React.createElement("input", {
+          id: "message-input",
+          value: this.state.userInput,
+          onChange: this.handleChange,
+          onKeyDown: this.keyPressed,
+          className: "form-control" })
       )
     );
   }
@@ -1232,7 +1243,16 @@ MessageStore.dispatchToken = AppDispatcher.register(function (payload) {
 
 module.exports = MessageStore;});
 
-require.register("web/static/js/utils/RouteUtils", function(exports, require, module) {
+require.register("web/static/js/utils/CourseUtils", function(exports, require, module) {
+"use strict";
+
+module.exports = {
+  courseName: function courseName(course) {
+    return course.dept + " " + course.course;
+  }
+};});
+
+;require.register("web/static/js/utils/RouteUtils", function(exports, require, module) {
 "use strict";
 
 var CourseStore = require("../stores/CourseStore.js");
@@ -1286,5 +1306,12 @@ module.exports = {
   }
 };});
 
-;
+;require.register("web/static/js/utils/initializers", function(exports, require, module) {
+"use strict";
+
+$(".pull-down").each(function () {
+  $(this).css("margin-top", $(this).parent().height() - $(this).height());
+});});
+
+
 //# sourceMappingURL=app.js.map

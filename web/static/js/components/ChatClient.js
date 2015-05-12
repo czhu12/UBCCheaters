@@ -26,12 +26,7 @@ var ChatClient = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="col-xs-8 col-sm-8 col-md-8">
-            <div className="comment-box">
-              <ChatMessageList />
-            </div>
-          </div>
-
+          <ChatMessageList course={course}/>
           <div className="col-xs-4 col-sm-4 col-md-4">
             <div className="files-box">
               <div className="files-title">

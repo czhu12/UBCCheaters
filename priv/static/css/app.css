@@ -16,110 +16,105 @@ h4 {
 
 /* line 6, stdin */
 html, body {
+  color: #333;
   height: 100%;
   background: #eee;
   overflow: hidden; }
 
-/* line 11, stdin */
+/* line 12, stdin */
 #menu {
   background: #ccc;
   width: 220px;
   height: 100%; }
 
-/* line 17, stdin */
+/* line 18, stdin */
 #menu ul {
   height: 100%;
   overflow: auto; }
 
-/* line 22, stdin */
+/* line 23, stdin */
 html, body {
   height: 100%; }
 
-/* line 26, stdin */
+/* line 27, stdin */
 #content {
   height: 100%;
   width: 100%; }
 
-/* line 31, stdin */
+/* line 32, stdin */
 hr {
   padding: 0;
   margin: 10px; }
 
-/* line 36, stdin */
+/* line 37, stdin */
 ul {
   padding: 0;
   margin: 0; }
 
-/* line 41, stdin */
+/* line 42, stdin */
 li {
   padding: 0;
   margin: 0; }
 
-/* line 46, stdin */
-#footer {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  padding-top: 1em;
-  background-color: #f5f5f5; }
-
-/* line 56, stdin */
+/* line 47, stdin */
 .files-container {
   height: 100%;
   overflow-y: auto; }
 
-/* line 61, stdin */
+/* line 52, stdin */
 .message-user {
   margin-right: 10px; }
 
-/* line 65, stdin */
+/* line 56, stdin */
 .file-link {
   font-size: 0.8em;
   cursor: pointer; }
 
-/* line 70, stdin */
+/* line 61, stdin */
 .message-divider {
   border-color: #34495e; }
 
-/* line 74, stdin */
-.messages-container {
-  height: 100%; }
+/* line 65, stdin */
+#footer {
+  position: fixed;
+  bottom: 0px;
+  height: 60px;
+  padding-top: 1em; }
 
-/* line 78, stdin */
+/* line 72, stdin */
+.messages-container {
+  height: 100%;
+  position: relative; }
+
+/* line 77, stdin */
 .messages-list {
   height: 80%;
   overflow: auto; }
 
-/* line 83, stdin */
+/* line 82, stdin */
 .file-upload {
   margin-bottom: 15px; }
 
-/* line 87, stdin */
+/* line 86, stdin */
 hr.style-six {
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
-/* line 94, stdin */
+/* line 93, stdin */
 .message {
-  height: 40px; }
+  min-height: 30px; }
 
-/* line 98, stdin */
+/* line 97, stdin */
 .Detail {
   height: 100%; }
 
-/* line 102, stdin */
+/* line 101, stdin */
 .comment-box {
   height: 100%; }
 
-/* line 106, stdin */
-.files-box {
-  padding-top: 50px; }
-
-/* line 110, stdin */
+/* line 108, stdin */
 .course-search-input {
   border-radius: 10px;
   padding: 5px;
@@ -127,76 +122,78 @@ hr.style-six {
   margin-bottom: 5px;
   width: 100%; }
 
-/* line 117, stdin */
-.style-5 input[type="text"] {
-  padding: 10px;
-  border: solid 1px #fff;
-  box-shadow: inset 1px 1px 2px 0 #707070;
-  transition: box-shadow 0.3s; }
+/* line 116, stdin */
+#course-search-bar {
+  padding-top: 10px;
+  padding-bottom: 20px; }
 
-/* line 124, stdin */
-.style-5 input[type="text"]:focus, .style-5 input[type="text"].focus {
-  box-shadow: inset 1px 1px 2px 0 #c9c9c9; }
-
-/* line 128, stdin */
+/* line 121, stdin */
 .course-list-container {
   height: 100%;
-  padding-left: 30px; }
+  padding-left: 30px;
+  padding-top: 30px; }
 
-/* line 133, stdin */
+/* line 127, stdin */
 .course-list {
   height: 80%;
   overflow: auto; }
 
-/* line 138, stdin */
+/* line 132, stdin */
 .course-course {
   padding-left: 10px; }
 
-/* line 142, stdin */
+/* line 136, stdin */
 .course-dept {
   cursor: pointer; }
 
-/* line 146, stdin */
+/* line 140, stdin */
 .course-dept:hover {
   background-color: blue;
   color: white; }
 
-/* line 151, stdin */
+/* line 145, stdin */
 .inner-addon {
   position: relative; }
 
 /* style icon */
-/* line 156, stdin */
+/* line 150, stdin */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none; }
 
 /* align icon */
-/* line 163, stdin */
+/* line 157, stdin */
 .left-addon .glyphicon {
   left: 0px; }
 
-/* line 164, stdin */
+/* line 158, stdin */
 .right-addon .glyphicon {
   right: 0px; }
 
 /* add padding  */
-/* line 167, stdin */
+/* line 161, stdin */
 .left-addon input {
   padding-left: 30px; }
 
-/* line 168, stdin */
+/* line 162, stdin */
 .right-addon input {
   padding-right: 30px; }
 
-/* line 170, stdin */
-.course-search > .glyphicon {
-  color: #999; }
-
-/* line 174, stdin */
+/* line 164, stdin */
 .comment-box > h3 {
   margin: 0;
+  padding: 0; }
+
+/* line 169, stdin */
+.comment-box > .course-name {
+  color: #666;
+  font-size: 1.2em;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+/* line 176, stdin */
+.no-padding {
   padding: 0; }
 
 

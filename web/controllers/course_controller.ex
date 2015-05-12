@@ -23,6 +23,7 @@ defmodule Chatty.CourseController do
     dept = course_params["dept"]
     faccode = course_params["faccode"]
     course = course_params["course"]
+
     query = from c in Course, where: c.dept == ^dept and c.faccode == ^faccode and c.course == ^course
     results = Repo.all(query)
     !((length results) == 0)
