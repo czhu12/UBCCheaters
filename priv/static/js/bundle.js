@@ -25573,9 +25573,13 @@ var DeptLink = React.createClass({displayName: "DeptLink",
     }); 
 
     return (
-      React.createElement("li", {key: this.props.dept, onClick: this.handleClick}, 
-        React.createElement("div", {className: "course-dept"}, this.props.dept), 
-        courses
+      React.createElement("li", {key: this.props.dept, className: "course-link-container", onClick: this.handleClick}, 
+        React.createElement("div", {className: "course-link"}, 
+          React.createElement("div", {className: "course-dept"}, 
+            this.props.dept
+          ), 
+          courses
+        )
       )
     );
   }

@@ -130,69 +130,75 @@ hr.style-six {
 /* line 121, stdin */
 .course-list-container {
   height: 100%;
-  padding-left: 30px;
   padding-top: 30px; }
 
-/* line 127, stdin */
+/* line 126, stdin */
 .course-list {
   height: 80%;
   overflow: auto; }
 
-/* line 132, stdin */
+/* line 131, stdin */
 .course-course {
   padding-left: 10px; }
 
-/* line 136, stdin */
+/* line 135, stdin */
 .course-dept {
   cursor: pointer; }
 
-/* line 140, stdin */
-.course-dept:hover {
+/* line 139, stdin */
+.course-link {
+  padding-left: 30px;
+  margin-right: 10px; }
+
+/* line 144, stdin */
+.course-link:hover {
+  padding-left: 30px;
+  margin-right: 10px;
   background-color: blue;
   color: white; }
 
-/* line 145, stdin */
+/* line 151, stdin */
 .inner-addon {
   position: relative; }
 
 /* style icon */
-/* line 150, stdin */
+/* line 156, stdin */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none; }
 
 /* align icon */
-/* line 157, stdin */
+/* line 163, stdin */
 .left-addon .glyphicon {
   left: 0px; }
 
-/* line 158, stdin */
+/* line 164, stdin */
 .right-addon .glyphicon {
   right: 0px; }
 
 /* add padding  */
-/* line 161, stdin */
+/* line 167, stdin */
 .left-addon input {
   padding-left: 30px; }
 
-/* line 162, stdin */
+/* line 168, stdin */
 .right-addon input {
   padding-right: 30px; }
 
-/* line 164, stdin */
+/* line 170, stdin */
 .comment-box > h3 {
   margin: 0;
   padding: 0; }
 
-/* line 169, stdin */
+/* line 175, stdin */
 .comment-box > .course-name {
   color: #666;
   font-size: 1.2em;
   padding-top: 10px;
   padding-bottom: 10px; }
 
-/* line 176, stdin */
+/* line 182, stdin */
 .no-padding {
   padding: 0; }
 

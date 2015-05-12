@@ -811,13 +811,17 @@ var DeptLink = React.createClass({
 
     return React.createElement(
       "li",
-      { key: this.props.dept, onClick: this.handleClick },
+      { key: this.props.dept, className: "course-link-container", onClick: this.handleClick },
       React.createElement(
         "div",
-        { className: "course-dept" },
-        this.props.dept
-      ),
-      courses
+        { className: "course-link" },
+        React.createElement(
+          "div",
+          { className: "course-dept" },
+          this.props.dept
+        ),
+        courses
+      )
     );
   }
 });

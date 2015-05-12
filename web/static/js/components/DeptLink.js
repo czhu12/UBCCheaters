@@ -41,9 +41,13 @@ var DeptLink = React.createClass({
     }); 
 
     return (
-      <li key={this.props.dept} onClick={this.handleClick}>
-        <div className="course-dept">{this.props.dept}</div>
-        {courses}
+      <li key={this.props.dept} className="course-link-container" onClick={this.handleClick}>
+        <div className="course-link">
+          <div className="course-dept">
+            {this.props.dept}
+          </div>
+          {courses}
+        </div>
       </li>
     );
   }
