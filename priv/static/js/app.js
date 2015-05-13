@@ -381,25 +381,7 @@ var ChatClient = React.createClass({
         "div",
         { className: "row" },
         React.createElement(ChatMessageList, { course: course }),
-        React.createElement(
-          "div",
-          { className: "col-xs-4 col-sm-4 col-md-4" },
-          React.createElement(
-            "div",
-            { className: "files-box" },
-            React.createElement(
-              "div",
-              { className: "files-title" },
-              React.createElement(
-                "h4",
-                null,
-                "Class files"
-              )
-            ),
-            React.createElement(FileUpload, null),
-            React.createElement(ChatFileList, null)
-          )
-        )
+        React.createElement(ChatFileList, null)
       )
     );
   }
@@ -460,6 +442,7 @@ require.register("web/static/js/components/ChatFileList", function(exports, requ
 "use strict";
 
 var ChatFile = require("./ChatFile");
+var FileUpload = require("./FileUpload");
 var FileStore = require("../stores/FileStore");
 var React = require("react");
 var RouteUtils = require("../utils/RouteUtils");
@@ -479,7 +462,9 @@ var ChatFileList = React.createClass({
   },
   componentDidMount: function componentDidMount() {
     FileStore.addChangeListener(this._onChange);
-    $(".files-list").height(document.documentElement.clientHeight);
+    var headerHeight = $(".files-header").height();
+    var paddingBottom = 30;
+    $(".files-list").height(document.documentElement.clientHeight - headerHeight - paddingBottom);
   },
   componentWillUnmount: function componentWillUnmount() {
     FileStore.removeChangeListener(this._onChange);
@@ -498,11 +483,33 @@ var ChatFileList = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "files-container" },
+      { className: "col-xs-4 col-sm-4 col-md-4" },
       React.createElement(
-        "ul",
-        { className: "files-list" },
-        files
+        "div",
+        { className: "files-box" },
+        React.createElement(
+          "div",
+          { className: "files-header" },
+          React.createElement(
+            "div",
+            { className: "files-title" },
+            React.createElement(
+              "h4",
+              null,
+              "Class files"
+            )
+          ),
+          React.createElement(FileUpload, null)
+        ),
+        React.createElement(
+          "div",
+          { className: "files-container" },
+          React.createElement(
+            "ul",
+            { className: "files-list" },
+            files
+          )
+        )
       )
     );
   }
@@ -672,7 +679,7 @@ var CourseList = React.createClass({
   displayName: "CourseList",
 
   componentDidMount: function componentDidMount() {
-    var paddingTop = parseInt($(".course-list-container").css("padding-top").replace("px", ""));
+    var paddingTop = parseInt($(".course-list-container").css("margin-top").replace("px", ""));
     var searchBarHeight = 2 * $("#course-search-bar").height();
     var paddingBottom = 30;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
@@ -699,12 +706,21 @@ var CourseList = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "course-list-container" },
-      React.createElement(CourseSearchBar, null),
+      { className: "left-hand-wrapper" },
       React.createElement(
-        "ul",
-        { className: "course-list" },
-        depts
+        "div",
+        { className: "app-name" },
+        "UBCCheaters"
+      ),
+      React.createElement(
+        "div",
+        { className: "course-list-container" },
+        React.createElement(CourseSearchBar, null),
+        React.createElement(
+          "ul",
+          { className: "course-list" },
+          depts
+        )
       )
     );
   },

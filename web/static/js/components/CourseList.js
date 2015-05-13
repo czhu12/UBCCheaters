@@ -6,7 +6,7 @@ var ViewActions = require('../actions/ViewActions.js');
 
 var CourseList = React.createClass({
   componentDidMount: function() { 
-    var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
+    var paddingTop = parseInt($(".course-list-container").css('margin-top').replace('px', ''));
     var searchBarHeight = 2 * $("#course-search-bar").height();
     var paddingBottom = 30;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
@@ -35,11 +35,14 @@ var CourseList = React.createClass({
     });
 
     return (
-      <div className="course-list-container">
-        <CourseSearchBar />
-        <ul className="course-list">
-          {depts}
-        </ul>
+      <div className="left-hand-wrapper">
+        <div className="app-name">UBCCheaters</div>
+        <div className="course-list-container">
+          <CourseSearchBar />
+          <ul className="course-list">
+            {depts}
+          </ul>
+        </div>
       </div>
     );
   },

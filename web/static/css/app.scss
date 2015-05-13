@@ -106,6 +106,7 @@ hr.style-six {
 }
 
 .course-search-input {
+  color: #7f8c8d;
   border-radius: 10px;
   padding: 5px;
   padding-left: 10px;
@@ -125,8 +126,17 @@ hr.style-six {
 .course-list-container {
   background-color: #1abc9c;
   height: 100%;
-  padding-top: 30px;
+  margin-top: 20px;
   color: #ecf0f1;
+}
+.left-hand-wrapper {
+  background-color: #16a085;
+}
+.app-name {
+  color: #ecf0f1;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 20px;
 }
 
 .course-list {

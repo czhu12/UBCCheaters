@@ -116,50 +116,62 @@ hr.style-six {
 
 /* line 108, stdin */
 .course-search-input {
+  color: #7f8c8d;
   border-radius: 10px;
   padding: 5px;
   padding-left: 10px;
   margin-bottom: 5px;
   width: 90%; }
 
-/* line 116, stdin */
+/* line 117, stdin */
 #course-search-bar {
   padding-top: 10px;
   margin-left: 20px;
   padding-bottom: 20px; }
 
-/* line 122, stdin */
+/* line 123, stdin */
 .course-list-container > a {
   color: white; }
 
-/* line 125, stdin */
+/* line 126, stdin */
 .course-list-container {
   background-color: #1abc9c;
   height: 100%;
-  padding-top: 30px;
+  margin-top: 20px;
   color: #ecf0f1; }
 
 /* line 132, stdin */
+.left-hand-wrapper {
+  background-color: #16a085; }
+
+/* line 135, stdin */
+.app-name {
+  color: #ecf0f1;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 20px; }
+
+/* line 142, stdin */
 .course-list {
   height: 80%;
   overflow: auto; }
 
-/* line 137, stdin */
+/* line 147, stdin */
 .course-course {
   padding-left: 10px; }
 
-/* line 141, stdin */
+/* line 151, stdin */
 .course-dept {
   cursor: pointer; }
 
-/* line 145, stdin */
+/* line 155, stdin */
 .course-link {
   padding-left: 30px;
   margin-right: 20px;
   min-height: 30px;
   line-height: 30px; }
 
-/* line 152, stdin */
+/* line 162, stdin */
 .course-link:hover {
   padding-left: 30px;
   margin-right: 20px;
@@ -170,41 +182,41 @@ hr.style-six {
   min-height: 30px;
   line-height: 30px; }
 
-/* line 163, stdin */
+/* line 173, stdin */
 .inner-addon {
   position: relative; }
 
 /* style icon */
-/* line 168, stdin */
+/* line 178, stdin */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none; }
 
 /* align icon */
-/* line 175, stdin */
+/* line 185, stdin */
 .left-addon .glyphicon {
   left: 0px; }
 
-/* line 176, stdin */
+/* line 186, stdin */
 .right-addon .glyphicon {
   right: 0px; }
 
 /* add padding  */
-/* line 179, stdin */
+/* line 189, stdin */
 .left-addon input {
   padding-left: 30px; }
 
-/* line 180, stdin */
+/* line 190, stdin */
 .right-addon input {
   padding-right: 30px; }
 
-/* line 182, stdin */
+/* line 192, stdin */
 .comment-box > h3 {
   margin: 0;
   padding: 0; }
 
-/* line 187, stdin */
+/* line 197, stdin */
 .comment-box > .course-name {
   color: #666;
   font-size: 1.8em;
@@ -212,20 +224,20 @@ hr.style-six {
   padding-top: 10px;
   padding-bottom: 10px; }
 
-/* line 195, stdin */
+/* line 205, stdin */
 .no-padding {
   padding: 0; }
 
-/* line 198, stdin */
+/* line 208, stdin */
 ::-webkit-scrollbar {
   width: 12px; }
 
-/* line 202, stdin */
+/* line 212, stdin */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px; }
 
-/* line 207, stdin */
+/* line 217, stdin */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }

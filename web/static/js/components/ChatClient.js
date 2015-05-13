@@ -27,17 +27,7 @@ var ChatClient = React.createClass({
       <div>
         <div className="row">
           <ChatMessageList course={course}/>
-          <div className="col-xs-4 col-sm-4 col-md-4">
-            <div className="files-box">
-              <div className="files-title">
-                <h4>
-                  Class files
-                </h4>
-              </div>
-              <FileUpload />
-              <ChatFileList />
-            </div>
-          </div>
+          <ChatFileList />
         </div>
       </div>
     );
