@@ -6,12 +6,14 @@ var ViewActions = require('../actions/ViewActions.js');
 
 var CourseList = React.createClass({
   componentDidMount: function() { 
-    var paddingTop = parseInt($(".course-list-container").css('margin-top').replace('px', ''));
+    var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 30;
+    var paddingBottom = 60;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
+    $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {
       $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
+      $(".course-list-container").height(document.documentElement.clientHeight);
     });
   },
   componentWillUnmount: function() {
@@ -36,7 +38,7 @@ var CourseList = React.createClass({
 
     return (
       <div className="left-hand-wrapper">
-        <div className="app-name">UBCCheaters</div>
+        <a className="home-link" href="/"><div className="app-name">UBC Cheaters</div></a>
         <div className="course-list-container">
           <CourseSearchBar />
           <ul className="course-list">

@@ -462,9 +462,15 @@ var ChatFileList = React.createClass({
   },
   componentDidMount: function componentDidMount() {
     FileStore.addChangeListener(this._onChange);
+    var marginTop = parseInt($(".files-container").css("margin-top").replace("px", ""));
     var headerHeight = $(".files-header").height();
     var paddingBottom = 30;
-    $(".files-list").height(document.documentElement.clientHeight - headerHeight - paddingBottom);
+    $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+    $(".files-container").height(document.documentElement.clientHeight);
+    $(window).resize(function () {
+      $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+      $(".files-container").height(document.documentElement.clientHeight);
+    });
   },
   componentWillUnmount: function componentWillUnmount() {
     FileStore.removeChangeListener(this._onChange);
@@ -486,24 +492,24 @@ var ChatFileList = React.createClass({
       { className: "col-xs-4 col-sm-4 col-md-4" },
       React.createElement(
         "div",
-        { className: "files-box" },
-        React.createElement(
-          "div",
-          { className: "files-header" },
-          React.createElement(
-            "div",
-            { className: "files-title" },
-            React.createElement(
-              "h4",
-              null,
-              "Class files"
-            )
-          ),
-          React.createElement(FileUpload, null)
-        ),
+        { className: "files-column" },
         React.createElement(
           "div",
           { className: "files-container" },
+          React.createElement(
+            "div",
+            { className: "files-header" },
+            React.createElement(
+              "div",
+              { className: "files-title" },
+              React.createElement(
+                "h4",
+                null,
+                "Class files"
+              )
+            ),
+            React.createElement(FileUpload, null)
+          ),
           React.createElement(
             "ul",
             { className: "files-list" },
@@ -679,12 +685,14 @@ var CourseList = React.createClass({
   displayName: "CourseList",
 
   componentDidMount: function componentDidMount() {
-    var paddingTop = parseInt($(".course-list-container").css("margin-top").replace("px", ""));
+    var paddingTop = parseInt($(".course-list-container").css("padding-top").replace("px", ""));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 30;
+    var paddingBottom = 60;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
+    $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function () {
       $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
+      $(".course-list-container").height(document.documentElement.clientHeight);
     });
   },
   componentWillUnmount: function componentWillUnmount() {},
@@ -708,9 +716,13 @@ var CourseList = React.createClass({
       "div",
       { className: "left-hand-wrapper" },
       React.createElement(
-        "div",
-        { className: "app-name" },
-        "UBCCheaters"
+        "a",
+        { className: "home-link", href: "/" },
+        React.createElement(
+          "div",
+          { className: "app-name" },
+          "UBC Cheaters"
+        )
       ),
       React.createElement(
         "div",
@@ -816,7 +828,7 @@ var DeptLink = React.createClass({
         null,
         React.createElement(
           Link,
-          { to: "course", params: { course_id: course.id } },
+          { to: "course", className: "course-nav-link", params: { course_id: course.id } },
           React.createElement(
             "div",
             { className: "course-course" },

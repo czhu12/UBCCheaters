@@ -17,9 +17,15 @@ var ChatFileList = React.createClass({
   },
   componentDidMount: function() { 
     FileStore.addChangeListener(this._onChange);
+    var marginTop = parseInt($(".files-container").css('margin-top').replace('px', ''));
     var headerHeight = $(".files-header").height();
     var paddingBottom = 30;
-    $(".files-list").height(document.documentElement.clientHeight - headerHeight - paddingBottom);
+    $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+    $(".files-container").height(document.documentElement.clientHeight);
+    $(window).resize(function() {
+      $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+      $(".files-container").height(document.documentElement.clientHeight);
+    });
   },
   componentWillUnmount: function() {
     FileStore.removeChangeListener(this._onChange); 
@@ -38,16 +44,14 @@ var ChatFileList = React.createClass({
 
     return (
       <div className="col-xs-4 col-sm-4 col-md-4">
-        <div className="files-box">
-          <div className="files-header">
-            <div className="files-title">
-              <h4>
-                Class files
-              </h4>
-            </div>
-            <FileUpload />
-          </div>
+        <div className="files-column">
           <div className="files-container"> 
+            <div className="files-header">
+              <div className="files-title">
+                <h4>Class files</h4>
+              </div>
+              <FileUpload />
+            </div>
             <ul className="files-list">
               {files}
             </ul>
