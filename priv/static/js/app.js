@@ -290,8 +290,12 @@ var Index = React.createClass({
   render: function render() {
     return React.createElement(
       "p",
-      null,
-      "Select a course from the left"
+      { className: "index-prompt" },
+      React.createElement(
+        "h2",
+        { className: "index-title" },
+        "Select a course from the left"
+      )
     );
   }
 });
@@ -466,6 +470,7 @@ var ChatFileList = React.createClass({
     var headerHeight = $(".files-header").height();
     var paddingBottom = 30;
     $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+    console.log($(".files-list").height());
     $(".files-container").height(document.documentElement.clientHeight);
     $(window).resize(function () {
       $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
@@ -687,7 +692,7 @@ var CourseList = React.createClass({
   componentDidMount: function componentDidMount() {
     var paddingTop = parseInt($(".course-list-container").css("padding-top").replace("px", ""));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 60;
+    var paddingBottom = 90;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function () {

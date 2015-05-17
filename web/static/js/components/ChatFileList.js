@@ -21,6 +21,7 @@ var ChatFileList = React.createClass({
     var headerHeight = $(".files-header").height();
     var paddingBottom = 30;
     $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+    console.log($(".files-list").height());
     $(".files-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {
       $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);

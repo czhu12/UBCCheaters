@@ -25088,7 +25088,13 @@ var App = React.createClass({displayName: "App",
 
 var Index = React.createClass({displayName: "Index",
   render: function () {
-    return React.createElement("p", null, "Select a course from the left");
+    return (
+      React.createElement("p", {className: "index-prompt"}, 
+        React.createElement("h2", {className: "index-title"}, 
+          "Select a course from the left"
+        )
+      )
+    );
   }
 });
 
@@ -25271,9 +25277,7 @@ var ChatFileList = React.createClass({displayName: "ChatFileList",
           React.createElement("div", {className: "files-container"}, 
             React.createElement("div", {className: "files-header"}, 
               React.createElement("div", {className: "files-title"}, 
-                React.createElement("h4", null, 
-                  "Class files"
-                )
+                React.createElement("h4", null, "Class files")
               ), 
               React.createElement(FileUpload, null)
             ), 
@@ -25417,7 +25421,7 @@ var CourseList = React.createClass({displayName: "CourseList",
   componentDidMount: function() { 
     var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 60;
+    var paddingBottom = 70;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {

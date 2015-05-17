@@ -8,7 +8,7 @@ var CourseList = React.createClass({
   componentDidMount: function() { 
     var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 60;
+    var paddingBottom = 90;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {

@@ -58,7 +58,7 @@ li {
 
 /* line 47, stdin */
 .files-container {
-  padding-top: 20px;
+  padding-top: 50px;
   height: 100%; }
 
 /* line 52, stdin */
@@ -73,63 +73,64 @@ li {
 /* line 61, stdin */
 .file-link a {
   padding-left: 20px;
-  color: #bdc3c7;
+  color: rgba(52, 73, 94, 0.8);
   font-size: 0.8em;
   cursor: pointer; }
 
 /* line 68, stdin */
 .file-link a:hover {
   padding-left: 20px;
-  color: #ecf0f1;
+  color: #2c3e50;
   font-size: 0.8em;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none; }
 
-/* line 75, stdin */
+/* line 76, stdin */
 .message-divider {
   border-color: #34495e; }
 
-/* line 79, stdin */
+/* line 80, stdin */
 #footer {
   position: fixed;
   bottom: 0px;
   height: 60px;
   padding-top: 1em; }
 
-/* line 86, stdin */
+/* line 87, stdin */
 .messages-container {
   height: 100%;
   position: relative; }
 
-/* line 91, stdin */
+/* line 92, stdin */
 .messages-list {
   height: 80%;
   overflow: auto; }
 
-/* line 96, stdin */
+/* line 97, stdin */
 .file-upload {
   padding-left: 20px;
   margin-bottom: 15px; }
 
-/* line 101, stdin */
+/* line 102, stdin */
 hr.style-six {
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
-/* line 108, stdin */
+/* line 109, stdin */
 .message {
   min-height: 30px; }
 
-/* line 112, stdin */
+/* line 113, stdin */
 .Detail {
   height: 100%; }
 
-/* line 116, stdin */
+/* line 117, stdin */
 .comment-box {
   height: 100%; }
 
-/* line 120, stdin */
+/* line 121, stdin */
 .course-search-input {
   color: #7f8c8d;
   border-radius: 10px;
@@ -138,36 +139,36 @@ hr.style-six {
   margin-bottom: 5px;
   width: 90%; }
 
-/* line 129, stdin */
+/* line 130, stdin */
 #course-search-bar {
   padding-top: 10px;
   margin-left: 20px;
   padding-bottom: 20px; }
 
-/* line 135, stdin */
+/* line 136, stdin */
 .course-list-container > a {
   color: white; }
 
-/* line 138, stdin */
+/* line 139, stdin */
 .course-list-container {
   background-color: #1abc9c;
   height: 100%;
   margin-top: 20px;
   color: #ecf0f1; }
 
-/* line 144, stdin */
+/* line 145, stdin */
 .left-hand-wrapper {
   background-color: #16a085; }
 
-/* line 147, stdin */
+/* line 148, stdin */
 .home-link {
   text-decoration: none; }
 
-/* line 150, stdin */
+/* line 151, stdin */
 .home-link:hover {
   text-decoration: none; }
 
-/* line 153, stdin */
+/* line 154, stdin */
 .app-name {
   font-family: 'Bree Serif', serif;
   color: #ecf0f1;
@@ -175,38 +176,38 @@ hr.style-six {
   padding-left: 20px;
   font-size: 20px; }
 
-/* line 161, stdin */
+/* line 162, stdin */
 .course-list {
   height: 80%;
   overflow: auto;
   padding-bottom: 5px; }
 
-/* line 167, stdin */
+/* line 168, stdin */
 .course-course {
   padding-left: 10px; }
 
-/* line 171, stdin */
+/* line 172, stdin */
 .course-dept {
   cursor: pointer; }
 
-/* line 175, stdin */
+/* line 176, stdin */
 .course-link {
   padding-left: 30px;
   margin-right: 20px;
   min-height: 30px;
   line-height: 30px; }
 
-/* line 182, stdin */
+/* line 183, stdin */
 .course-nav-link {
   text-decoration: none;
   color: white; }
 
-/* line 187, stdin */
+/* line 188, stdin */
 .course-nav-link:hover {
   text-decoration: none;
   color: white; }
 
-/* line 192, stdin */
+/* line 193, stdin */
 .course-link:hover {
   padding-left: 30px;
   margin-right: 20px;
@@ -217,85 +218,88 @@ hr.style-six {
   min-height: 30px;
   line-height: 30px; }
 
-/* line 203, stdin */
+/* line 204, stdin */
 .inner-addon {
   position: relative; }
 
 /* style icon */
-/* line 208, stdin */
+/* line 209, stdin */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none; }
 
 /* align icon */
-/* line 215, stdin */
+/* line 216, stdin */
 .left-addon .glyphicon {
   left: 0px; }
 
-/* line 216, stdin */
+/* line 217, stdin */
 .right-addon .glyphicon {
   right: 0px; }
 
 /* add padding  */
-/* line 219, stdin */
+/* line 220, stdin */
 .left-addon input {
   padding-left: 30px; }
 
-/* line 220, stdin */
+/* line 221, stdin */
 .right-addon input {
   padding-right: 30px; }
 
-/* line 222, stdin */
+/* line 223, stdin */
 .comment-box > h3 {
   margin: 0;
   padding: 0; }
 
-/* line 227, stdin */
+/* line 228, stdin */
 .comment-box > .course-name {
-  color: #666;
+  color: #34495e;
   font-size: 1.8em;
   font-weight: bold;
   padding-top: 10px;
   padding-bottom: 10px; }
 
-/* line 235, stdin */
+/* line 236, stdin */
 .no-padding {
   padding: 0; }
 
-/* line 238, stdin */
+/* line 239, stdin */
 ::-webkit-scrollbar {
   width: 12px; }
 
-/* line 242, stdin */
+/* line 243, stdin */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px; }
 
-/* line 247, stdin */
+/* line 248, stdin */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
 
-/* line 252, stdin */
-.files-column {
-  color: #ecf0f1;
-  background-color: #2c3e50; }
-
-/* line 257, stdin */
+/* line 256, stdin */
 .files-title {
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-bottom: 10px;
-  background-color: #34495e;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em; }
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 12px;
+  background-color: rgba(189, 195, 199, 0.4);
+  border-top-left-radius: 0.5em;
+  margin-bottom: 20px; }
 
-/* line 266, stdin */
+/* line 265, stdin */
 .files-title > h4 {
   font-family: 'Bree Serif', serif;
-  color: #ecf0f1;
-  font-size: 20px; }
+  color: rgba(52, 73, 94, 0.7);
+  font-size: 1.5em; }
+
+/* line 271, stdin */
+.index-title {
+  color: #7f8c8d; }
+
+/* line 275, stdin */
+.index-prompt {
+  padding-top: 30px; }
 
 
 /*# sourceMappingURL=app.css.map*/
