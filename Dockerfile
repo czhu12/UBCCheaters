@@ -1,6 +1,8 @@
 FROM trenpixster/elixir:latest
 MAINTAINER Chris Zhu <chris.zhu12@gmail.com>
 
+RUN apt-get update && apt-get install -qy nodejs postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
 RUN echo %sudo    ALL=NOPASSWD: ALL>>/etc/sudoers
 
 RUN useradd -m -G sudo app

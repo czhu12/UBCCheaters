@@ -10,6 +10,14 @@ config :chatty, Chatty.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "example.com"]
 
+# Configure your database
+config :chatty, Chatty.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  hostname: "postgres",
+  username: "postgres",
+  password: "2ubc4cheaters8",
+  database: "chatty_prod"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
