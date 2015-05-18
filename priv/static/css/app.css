@@ -103,34 +103,36 @@ li {
 
 /* line 92, stdin */
 .messages-list {
+  padding-left: 15px;
   height: 80%;
-  overflow: auto; }
+  overflow: auto;
+  list-style-type: none; }
 
-/* line 97, stdin */
+/* line 99, stdin */
 .file-upload {
   padding-left: 20px;
   margin-bottom: 15px; }
 
-/* line 102, stdin */
+/* line 104, stdin */
 hr.style-six {
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
-/* line 109, stdin */
+/* line 111, stdin */
 .message {
   min-height: 30px; }
 
-/* line 113, stdin */
+/* line 115, stdin */
 .Detail {
   height: 100%; }
 
-/* line 117, stdin */
+/* line 119, stdin */
 .comment-box {
   height: 100%; }
 
-/* line 121, stdin */
+/* line 123, stdin */
 .course-search-input {
   color: #7f8c8d;
   border-radius: 10px;
@@ -139,36 +141,36 @@ hr.style-six {
   margin-bottom: 5px;
   width: 90%; }
 
-/* line 130, stdin */
+/* line 132, stdin */
 #course-search-bar {
   padding-top: 10px;
   margin-left: 20px;
   padding-bottom: 20px; }
 
-/* line 136, stdin */
+/* line 138, stdin */
 .course-list-container > a {
   color: white; }
 
-/* line 139, stdin */
+/* line 141, stdin */
 .course-list-container {
   background-color: #1abc9c;
   height: 100%;
   margin-top: 20px;
   color: #ecf0f1; }
 
-/* line 145, stdin */
+/* line 147, stdin */
 .left-hand-wrapper {
   background-color: #16a085; }
 
-/* line 148, stdin */
+/* line 150, stdin */
 .home-link {
   text-decoration: none; }
 
-/* line 151, stdin */
+/* line 153, stdin */
 .home-link:hover {
   text-decoration: none; }
 
-/* line 154, stdin */
+/* line 156, stdin */
 .app-name {
   font-family: 'Bree Serif', serif;
   color: #ecf0f1;
@@ -176,38 +178,38 @@ hr.style-six {
   padding-left: 20px;
   font-size: 20px; }
 
-/* line 162, stdin */
+/* line 164, stdin */
 .course-list {
   height: 80%;
   overflow: auto;
   padding-bottom: 5px; }
 
-/* line 168, stdin */
+/* line 170, stdin */
 .course-course {
   padding-left: 10px; }
 
-/* line 172, stdin */
+/* line 174, stdin */
 .course-dept {
   cursor: pointer; }
 
-/* line 176, stdin */
+/* line 178, stdin */
 .course-link {
   padding-left: 30px;
   margin-right: 20px;
   min-height: 30px;
   line-height: 30px; }
 
-/* line 183, stdin */
+/* line 185, stdin */
 .course-nav-link {
   text-decoration: none;
   color: white; }
 
-/* line 188, stdin */
+/* line 190, stdin */
 .course-nav-link:hover {
   text-decoration: none;
   color: white; }
 
-/* line 193, stdin */
+/* line 195, stdin */
 .course-link:hover {
   padding-left: 30px;
   margin-right: 20px;
@@ -218,67 +220,68 @@ hr.style-six {
   min-height: 30px;
   line-height: 30px; }
 
-/* line 204, stdin */
+/* line 206, stdin */
 .inner-addon {
   position: relative; }
 
 /* style icon */
-/* line 209, stdin */
+/* line 211, stdin */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none; }
 
 /* align icon */
-/* line 216, stdin */
+/* line 218, stdin */
 .left-addon .glyphicon {
   left: 0px; }
 
-/* line 217, stdin */
+/* line 219, stdin */
 .right-addon .glyphicon {
   right: 0px; }
 
 /* add padding  */
-/* line 220, stdin */
+/* line 222, stdin */
 .left-addon input {
   padding-left: 30px; }
 
-/* line 221, stdin */
+/* line 223, stdin */
 .right-addon input {
   padding-right: 30px; }
 
-/* line 223, stdin */
+/* line 225, stdin */
 .comment-box > h3 {
   margin: 0;
   padding: 0; }
 
-/* line 228, stdin */
+/* line 230, stdin */
 .comment-box > .course-name {
+  padding-left: 15px;
   color: #34495e;
   font-size: 1.8em;
   font-weight: bold;
   padding-top: 10px;
   padding-bottom: 10px; }
 
-/* line 236, stdin */
+/* line 239, stdin */
 .no-padding {
   padding: 0; }
 
-/* line 239, stdin */
+/* line 242, stdin */
 ::-webkit-scrollbar {
   width: 12px; }
 
-/* line 243, stdin */
+/* line 246, stdin */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px; }
 
-/* line 248, stdin */
+/* line 251, stdin */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
 
-/* line 256, stdin */
+/* line 259, stdin */
 .files-title {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -287,17 +290,17 @@ hr.style-six {
   border-top-left-radius: 0.5em;
   margin-bottom: 20px; }
 
-/* line 265, stdin */
+/* line 268, stdin */
 .files-title > h4 {
   font-family: 'Bree Serif', serif;
   color: rgba(52, 73, 94, 0.7);
   font-size: 1.5em; }
 
-/* line 271, stdin */
+/* line 274, stdin */
 .index-title {
   color: #7f8c8d; }
 
-/* line 275, stdin */
+/* line 278, stdin */
 .index-prompt {
   padding-top: 30px; }
 

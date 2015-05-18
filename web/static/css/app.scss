@@ -90,8 +90,10 @@ li {
 }
 
 .messages-list {
+  padding-left: 15px;
   height: 80%;
   overflow: auto;
+  list-style-type: none;
 }
 
 .file-upload {
@@ -226,6 +228,7 @@ hr.style-six {
 }
 
 .comment-box > .course-name {
+  padding-left: 15px;
   color: rgba(52, 73, 94,1.0);
   font-size: 1.8em;
   font-weight: bold;

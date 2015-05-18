@@ -460,18 +460,24 @@ var ChatFileList = React.createClass({
   getInitialState: function getInitialState() {
     return fetchState();
   },
-  componentDidMount: function componentDidMount() {
-    FileStore.addChangeListener(this._onChange);
+  resize: function resize() {
     var marginTop = parseInt($(".files-container").css("margin-top").replace("px", ""));
     var headerHeight = $(".files-header").height();
-    var paddingBottom = 30;
+    var paddingBottom = 80;
+
+    console.log($(".files-list").height());
     $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
     console.log($(".files-list").height());
     $(".files-container").height(document.documentElement.clientHeight);
+
     $(window).resize(function () {
       $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
       $(".files-container").height(document.documentElement.clientHeight);
     });
+  },
+  componentDidMount: function componentDidMount() {
+    this.resize();
+    FileStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function componentWillUnmount() {
     FileStore.removeChangeListener(this._onChange);
