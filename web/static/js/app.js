@@ -59,11 +59,9 @@ var App = React.createClass({
 var Index = React.createClass({
   render: function () {
     return (
-      <p className="index-prompt">
-        <h2 className="index-title">
-          Select a course from the left
-        </h2>
-      </p>
+      <h2 className="index-title">
+        Select a course from the left
+      </h2>
     );
   }
 });

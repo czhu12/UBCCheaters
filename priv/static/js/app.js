@@ -289,13 +289,9 @@ var Index = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "p",
-      { className: "index-prompt" },
-      React.createElement(
-        "h2",
-        { className: "index-title" },
-        "Select a course from the left"
-      )
+      "h2",
+      { className: "index-title" },
+      "Select a course from the left"
     );
   }
 });

@@ -29,7 +29,7 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :chatty, Chatty.Repo,
   adapter: Ecto.Adapters.Postgres,
-  hostname: "postgres",
-  username: "postgres",
+  hostname: "localhost",
+  username: "chatty_dev",
   password: "chatty_dev",
   database: "chatty_dev"

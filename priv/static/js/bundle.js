@@ -25089,10 +25089,8 @@ var App = React.createClass({displayName: "App",
 var Index = React.createClass({displayName: "Index",
   render: function () {
     return (
-      React.createElement("p", {className: "index-prompt"}, 
-        React.createElement("h2", {className: "index-title"}, 
-          "Select a course from the left"
-        )
+      React.createElement("h2", {className: "index-title"}, 
+        "Select a course from the left"
       )
     );
   }
@@ -25250,6 +25248,7 @@ var ChatFileList = React.createClass({displayName: "ChatFileList",
     var headerHeight = $(".files-header").height();
     var paddingBottom = 30;
     $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
+    console.log($(".files-list").height());
     $(".files-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {
       $(".files-list").height(document.documentElement.clientHeight - marginTop - headerHeight - paddingBottom);
@@ -25421,7 +25420,7 @@ var CourseList = React.createClass({displayName: "CourseList",
   componentDidMount: function() { 
     var paddingTop = parseInt($(".course-list-container").css('padding-top').replace('px', ''));
     var searchBarHeight = 2 * $("#course-search-bar").height();
-    var paddingBottom = 70;
+    var paddingBottom = 90;
     $(".course-list").height(document.documentElement.clientHeight - paddingTop - searchBarHeight - paddingBottom);
     $(".course-list-container").height(document.documentElement.clientHeight);
     $(window).resize(function() {
