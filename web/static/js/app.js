@@ -2,9 +2,9 @@ var AppAPI = require('./api/AppAPI');
 var React = require('react');
 var ChatMessageList = require('./components/ChatMessageList');
 var ChatFileList = require('./components/ChatFileList');
-var CourseList = require('./components/CourseList');
 var CourseSearchBar = require('./components/CourseSearchBar');
 var DeptLink = require('./components/DeptLink');
+var LeftNav = require('./components/LeftNav');
 var ServerActionCreators = require('./actions/ServerActionCreators');
 var ChatClient = require('./components/ChatClient');
 var FileUpload = require('./components/FileUpload');
@@ -44,12 +44,8 @@ var App = React.createClass({
     return (
       <div className="App">
         <div className="row">
-          <ul className="Master classes-list hidden-xs col-md-2 col-sm-2 col-lg-2">
-            <CourseList depts={this.state.depts}/>
-          </ul>
-          <div className="Detail col-md-10 col-sm-10 col-lg-10">
-            <RouteHandler />
-          </div>
+          <LeftNav depts={this.state.depts}/>
+          <RouteHandler />
         </div>
       </div>
     );

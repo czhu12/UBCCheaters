@@ -223,9 +223,9 @@ var AppAPI = require("./api/AppAPI");
 var React = require("react");
 var ChatMessageList = require("./components/ChatMessageList");
 var ChatFileList = require("./components/ChatFileList");
-var CourseList = require("./components/CourseList");
 var CourseSearchBar = require("./components/CourseSearchBar");
 var DeptLink = require("./components/DeptLink");
+var LeftNav = require("./components/LeftNav");
 var ServerActionCreators = require("./actions/ServerActionCreators");
 var ChatClient = require("./components/ChatClient");
 var FileUpload = require("./components/FileUpload");
@@ -269,16 +269,8 @@ var App = React.createClass({
       React.createElement(
         "div",
         { className: "row" },
-        React.createElement(
-          "ul",
-          { className: "Master classes-list hidden-xs col-md-2 col-sm-2 col-lg-2" },
-          React.createElement(CourseList, { depts: this.state.depts })
-        ),
-        React.createElement(
-          "div",
-          { className: "Detail col-md-10 col-sm-10 col-lg-10" },
-          React.createElement(RouteHandler, null)
-        )
+        React.createElement(LeftNav, { depts: this.state.depts }),
+        React.createElement(RouteHandler, null)
       )
     );
   }
@@ -376,7 +368,7 @@ var ChatClient = React.createClass({
     var courseNumber = course.course;
     return React.createElement(
       "div",
-      null,
+      { id: "chat-client" },
       React.createElement(
         "div",
         { className: "row" },
@@ -868,6 +860,36 @@ module.exports = DeptLink;
 
 //CourseStore.removeChangeListener(this._onChange);});
 
+require.register("web/static/js/components/ExpandButton", function(exports, require, module) {
+"use strict";
+
+var CourseList = require("./CourseList.js");
+var React = require("react");
+
+var ExpandButton = React.createClass({
+  displayName: "ExpandButton",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "navbar navbar-default navbar-fixed-top hidden-md hidden-lg" },
+      React.createElement(
+        "button",
+        { type: "button", className: "navbar-toggle", "data-toggle": "offcanvas", "data-target": ".navmenu" },
+        React.createElement("span", { className: "icon-bar" }),
+        React.createElement("span", { className: "icon-bar" }),
+        React.createElement("span", { className: "icon-bar" })
+      ),
+      React.createElement(
+        "a",
+        { className: "navbar-brand", href: "#" },
+        "UBC Cheaters"
+      )
+    );
+  } });
+
+module.exports = ExpandButton;});
+
 require.register("web/static/js/components/FileUpload", function(exports, require, module) {
 "use strict";
 
@@ -1023,6 +1045,31 @@ var Footer = React.createClass({
 });
 
 module.exports = Footer;});
+
+require.register("web/static/js/components/LeftNav", function(exports, require, module) {
+"use strict";
+
+var CourseList = require("./CourseList");
+var ExpandButton = require("./ExpandButton");
+var React = require("react");
+
+var LeftNav = React.createClass({
+  displayName: "LeftNav",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "div",
+        { id: "left-nav", className: "navmenu navmenu-default navmenu-fixed-left offcanvas-sm" },
+        React.createElement(CourseList, { depts: this.props.depts })
+      ),
+      React.createElement(ExpandButton, null)
+    );
+  } });
+
+module.exports = LeftNav;});
 
 require.register("web/static/js/constants/Constants", function(exports, require, module) {
 "use strict";

@@ -24,7 +24,7 @@ var ChatClient = React.createClass({
     var dept = course.dept;
     var courseNumber = course.course;
     return (
-      <div>
+      <div id="chat-client">
         <div className="row">
           <ChatMessageList course={course}/>
           <ChatFileList />
