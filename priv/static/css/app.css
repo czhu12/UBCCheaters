@@ -297,67 +297,73 @@ hr.style-six {
 
 /* line 273, stdin */
 .index-title {
-  padding-left: 35px;
-  color: #7f8c8d; }
+  font-weight: bold;
+  display: inline; }
 
 /* line 278, stdin */
+.index {
+  color: #7f8c8d;
+  padding: 20px 35px 0px 35px;
+  font-size: 1.3em; }
+
+/* line 284, stdin */
 .index-prompt {
   padding-top: 30px; }
 
-/* line 282, stdin */
+/* line 288, stdin */
 html, body {
   height: 100%; }
 
-/* line 285, stdin */
+/* line 291, stdin */
 body {
   padding: 50px 0 0 0; }
 
-/* line 289, stdin */
+/* line 295, stdin */
 .navmenu {
   padding-top: 50px; }
 
-/* line 293, stdin */
+/* line 299, stdin */
 .navbar {
   display: block;
   text-align: center; }
 
-/* line 298, stdin */
+/* line 304, stdin */
 .navbar-brand {
   display: inline-block;
   float: none; }
 
-/* line 302, stdin */
+/* line 308, stdin */
 .navbar-toggle {
   position: absolute;
   float: left;
   margin-left: 15px; }
 
-/* line 308, stdin */
+/* line 314, stdin */
 .container {
   max-width: 100%; }
 
 @media (min-width: 1px) {
-  /* line 313, stdin */
+  /* line 319, stdin */
   .navbar-toggle {
     display: block !important; } }
 
 @media (min-width: 992px) {
-  /* line 319, stdin */
+  /* line 325, stdin */
   body {
     padding: 0 0 0 300px; }
-  /* line 322, stdin */
+  /* line 328, stdin */
   .navmenu {
     padding-top: 0; }
-  /* line 325, stdin */
+  /* line 331, stdin */
   .navbar {
     display: none !important;
     /* IE8 fix */ } }
 
-/* line 330, stdin */
+/* line 336, stdin */
 #left-nav {
   overflow-y: hidden; }
 
-/* line 334, stdin */
+/* line 340, stdin */
 #chat-client {
   padding-left: 35px; }
 

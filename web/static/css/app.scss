@@ -271,8 +271,14 @@ hr.style-six {
 }
 
 .index-title {
-  padding-left: 35px;
+  font-weight: bold;
+  display: inline;
+}
+
+.index {
   color: #7f8c8d;
+  padding: 20px 35px 0px 35px;
+  font-size: 1.3em;
 }
 
 .index-prompt {

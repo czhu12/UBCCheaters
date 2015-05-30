@@ -281,9 +281,23 @@ var Index = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "h2",
-      { className: "index-title" },
-      "Select a course from the left"
+      "div",
+      { className: "index" },
+      React.createElement(
+        "p",
+        null,
+        "UBC Cheats creates a chatroom for every UBC class for students to share notes and discuss material. To get started,",
+        React.createElement(
+          "span",
+          { className: "index-title visible-lg visible-md" },
+          "Select a course from the left."
+        ),
+        React.createElement(
+          "span",
+          { className: "index-title visible-sm visible-xs" },
+          "Slide out the menu above and select a course."
+        )
+      )
     );
   }
 });

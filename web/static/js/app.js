@@ -55,9 +55,19 @@ var App = React.createClass({
 var Index = React.createClass({
   render: function () {
     return (
-      <h2 className="index-title">
-        Select a course from the left
-      </h2>
+      <div className="index">
+        <p>
+          UBC Cheats creates a chatroom for every UBC 
+          class for students to share notes and discuss material. 
+          To get started, 
+          <span className="index-title visible-lg visible-md">
+            Select a course from the left.
+          </span>
+          <span className="index-title visible-sm visible-xs">
+            Slide out the menu above and select a course.
+          </span>
+        </p>
+      </div>
     );
   }
 });
