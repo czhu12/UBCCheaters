@@ -674,6 +674,7 @@ module.exports = ChatMessageList;});
 require.register("web/static/js/components/CourseList", function(exports, require, module) {
 "use strict";
 
+var Constants = require("../constants/Constants");
 var CourseSearchBar = require("../components/CourseSearchBar");
 var CourseStore = require("../stores/CourseStore");
 var DeptLink = require("../components/DeptLink");
@@ -720,7 +721,7 @@ var CourseList = React.createClass({
         React.createElement(
           "div",
           { className: "app-name" },
-          "UBC Cheaters"
+          Constants.Terms.APP_NAME
         )
       ),
       React.createElement(
@@ -863,6 +864,7 @@ module.exports = DeptLink;
 require.register("web/static/js/components/ExpandButton", function(exports, require, module) {
 "use strict";
 
+var Constants = require("../constants/Constants");
 var CourseList = require("./CourseList.js");
 var React = require("react");
 
@@ -883,7 +885,7 @@ var ExpandButton = React.createClass({
       React.createElement(
         "a",
         { className: "navbar-brand", href: "#" },
-        "UBC Cheaters"
+        Constants.Terms.APP_NAME
       )
     );
   } });
@@ -1090,7 +1092,11 @@ module.exports = {
   PayloadSources: keymirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
-  })
+  }),
+
+  Terms: {
+    APP_NAME: "UBC Cheaters"
+  }
 };});
 
 ;require.register("web/static/js/dispatcher/AppDispatcher", function(exports, require, module) {

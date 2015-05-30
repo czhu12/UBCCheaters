@@ -25444,6 +25444,7 @@ module.exports = ChatMessageList;
 
 
 },{"../stores/MessageStore":222,"../utils/CourseUtils":223,"../utils/RouteUtils":224,"./ChatMessage":209,"./Footer":216,"react":199}],211:[function(require,module,exports){
+var Constants = require('../constants/Constants');
 var CourseSearchBar = require('../components/CourseSearchBar');
 var CourseStore = require('../stores/CourseStore');
 var DeptLink = require('../components/DeptLink');
@@ -25484,7 +25485,7 @@ var CourseList = React.createClass({displayName: "CourseList",
 
     return (
       React.createElement("div", {className: "left-hand-wrapper"}, 
-        React.createElement("a", {className: "home-link", href: "/"}, React.createElement("div", {className: "app-name"}, "UBC Cheaters")), 
+        React.createElement("a", {className: "home-link", href: "/"}, React.createElement("div", {className: "app-name"}, Constants.Terms.APP_NAME)), 
         React.createElement("div", {className: "course-list-container"}, 
           React.createElement(CourseSearchBar, null), 
           React.createElement("ul", {className: "course-list"}, 
@@ -25501,7 +25502,7 @@ var CourseList = React.createClass({displayName: "CourseList",
 module.exports = CourseList;
 
 
-},{"../actions/ViewActions.js":203,"../components/CourseSearchBar":212,"../components/DeptLink":213,"../stores/CourseStore":220,"react":199}],212:[function(require,module,exports){
+},{"../actions/ViewActions.js":203,"../components/CourseSearchBar":212,"../components/DeptLink":213,"../constants/Constants":218,"../stores/CourseStore":220,"react":199}],212:[function(require,module,exports){
 var React = require('react');
 var ViewActions = require('../actions/ViewActions.js');
 
@@ -25611,6 +25612,7 @@ module.exports = DeptLink;
 
 
 },{"../actions/ViewActions":203,"../stores/CourseStore":220,"react":199,"react-router":31}],214:[function(require,module,exports){
+var Constants = require('../constants/Constants');
 var CourseList = require('./CourseList.js');
 var React = require('react');
 
@@ -25623,7 +25625,7 @@ var ExpandButton = React.createClass({displayName: "ExpandButton",
           React.createElement("span", {className: "icon-bar"}), 
           React.createElement("span", {className: "icon-bar"})
         ), 
-        React.createElement("a", {className: "navbar-brand", href: "#"}, "UBC Cheaters")
+        React.createElement("a", {className: "navbar-brand", href: "#"}, Constants.Terms.APP_NAME)
       )
     );
   },
@@ -25632,7 +25634,7 @@ var ExpandButton = React.createClass({displayName: "ExpandButton",
 module.exports = ExpandButton;
 
 
-},{"./CourseList.js":211,"react":199}],215:[function(require,module,exports){
+},{"../constants/Constants":218,"./CourseList.js":211,"react":199}],215:[function(require,module,exports){
 var RouteUtils = require('../utils/RouteUtils');
 var React = require('react');
 var MessageStore = require('../stores/MessageStore');
@@ -25814,7 +25816,11 @@ module.exports = {
   PayloadSources: keymirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
-  })
+  }),
+
+  Terms: {
+    APP_NAME: "UBC Cheaters"
+  }
 }
 
 

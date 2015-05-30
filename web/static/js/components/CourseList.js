@@ -1,3 +1,4 @@
+var Constants = require('../constants/Constants');
 var CourseSearchBar = require('../components/CourseSearchBar');
 var CourseStore = require('../stores/CourseStore');
 var DeptLink = require('../components/DeptLink');
@@ -38,7 +39,7 @@ var CourseList = React.createClass({
 
     return (
       <div className="left-hand-wrapper">
-        <a className="home-link" href="/"><div className="app-name">UBC Cheaters</div></a>
+        <a className="home-link" href="/"><div className="app-name">{Constants.Terms.APP_NAME}</div></a>
         <div className="course-list-container">
           <CourseSearchBar />
           <ul className="course-list">

@@ -14,5 +14,9 @@ module.exports = {
   PayloadSources: keymirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
-  })
+  }),
+
+  Terms: {
+    APP_NAME: "UBC Cheaters"
+  }
 }

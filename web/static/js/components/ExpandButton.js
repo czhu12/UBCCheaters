@@ -1,3 +1,4 @@
+var Constants = require('../constants/Constants');
 var CourseList = require('./CourseList.js');
 var React = require('react');
 
@@ -10,7 +11,7 @@ var ExpandButton = React.createClass({
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
         </button>
-        <a className="navbar-brand" href="#">UBC Cheaters</a>
+        <a className="navbar-brand" href="#">{Constants.Terms.APP_NAME}</a>
       </div>
     );
   },
