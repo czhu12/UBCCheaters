@@ -5,13 +5,13 @@ var React = require('react');
 var ExpandButton = React.createClass({
   render: function() {         
     return (
-      <div className="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
-        <button type="button" className="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+      <div id="top-nav" className="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
+        <button id="expand-button" type="button" className="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
         </button>
-        <a className="navbar-brand" href="#">{Constants.Terms.APP_NAME}</a>
+        <a className="navbar-brand" id="top-nav-title" href="#"><span className="app-name">{Constants.Terms.APP_NAME}</span></a>
       </div>
     );
   },

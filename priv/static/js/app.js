@@ -906,18 +906,22 @@ var ExpandButton = React.createClass({
   render: function render() {
     return React.createElement(
       "div",
-      { className: "navbar navbar-default navbar-fixed-top hidden-md hidden-lg" },
+      { id: "top-nav", className: "navbar navbar-default navbar-fixed-top hidden-md hidden-lg" },
       React.createElement(
         "button",
-        { type: "button", className: "navbar-toggle", "data-toggle": "offcanvas", "data-target": ".navmenu" },
+        { id: "expand-button", type: "button", className: "navbar-toggle", "data-toggle": "offcanvas", "data-target": ".navmenu" },
         React.createElement("span", { className: "icon-bar" }),
         React.createElement("span", { className: "icon-bar" }),
         React.createElement("span", { className: "icon-bar" })
       ),
       React.createElement(
         "a",
-        { className: "navbar-brand", href: "#" },
-        Constants.Terms.APP_NAME
+        { className: "navbar-brand", id: "top-nav-title", href: "#" },
+        React.createElement(
+          "span",
+          { className: "app-name" },
+          Constants.Terms.APP_NAME
+        )
       )
     );
   } });

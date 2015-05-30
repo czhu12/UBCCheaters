@@ -25632,13 +25632,13 @@ var React = require('react');
 var ExpandButton = React.createClass({displayName: "ExpandButton",
   render: function() {         
     return (
-      React.createElement("div", {className: "navbar navbar-default navbar-fixed-top hidden-md hidden-lg"}, 
-        React.createElement("button", {type: "button", className: "navbar-toggle", "data-toggle": "offcanvas", "data-target": ".navmenu"}, 
+      React.createElement("div", {id: "top-nav", className: "navbar navbar-default navbar-fixed-top hidden-md hidden-lg"}, 
+        React.createElement("button", {id: "expand-button", type: "button", className: "navbar-toggle", "data-toggle": "offcanvas", "data-target": ".navmenu"}, 
           React.createElement("span", {className: "icon-bar"}), 
           React.createElement("span", {className: "icon-bar"}), 
           React.createElement("span", {className: "icon-bar"})
         ), 
-        React.createElement("a", {className: "navbar-brand", href: "#"}, Constants.Terms.APP_NAME)
+        React.createElement("a", {className: "navbar-brand", id: "top-nav-title", href: "#"}, React.createElement("span", {className: "app-name"}, Constants.Terms.APP_NAME))
       )
     );
   },
