@@ -25119,14 +25119,17 @@ var Index = React.createClass({displayName: "Index",
     return (
       React.createElement("div", {className: "index"}, 
         React.createElement("p", null, 
-          "UBC Cheats creates a chatroom for every UBC" + ' ' + 
-          "class for students to share notes and discuss material." + ' ' + 
-          "To get started,",  
-          React.createElement("span", {className: "index-title visible-lg visible-md"}, 
-            "Select a course from the left."
+          React.createElement("span", null, 
+            "UBC Cheats creates a chatroom for every UBC" + ' ' + 
+            "class for students to share notes and discuss material." 
+          )
+        ), 
+        React.createElement("p", null, 
+          React.createElement("span", {className: "visible-md visible-lg"}, 
+            "To get started, ", React.createElement("span", {className: "index-title"}, "Select a course from the left.")
           ), 
-          React.createElement("span", {className: "index-title visible-sm visible-xs"}, 
-            "Slide out the menu above and select a course."
+          React.createElement("span", {className: "visible-sm visible-xs"}, 
+            "To get started, ", React.createElement("span", {className: "index-title"}, "Select a course from the menu above.")
           )
         )
       )

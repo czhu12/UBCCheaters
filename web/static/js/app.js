@@ -57,14 +57,17 @@ var Index = React.createClass({
     return (
       <div className="index">
         <p>
-          UBC Cheats creates a chatroom for every UBC 
-          class for students to share notes and discuss material. 
-          To get started, 
-          <span className="index-title visible-lg visible-md">
-            Select a course from the left.
+          <span> 
+            UBC Cheats creates a chatroom for every UBC 
+            class for students to share notes and discuss material. 
           </span>
-          <span className="index-title visible-sm visible-xs">
-            Slide out the menu above and select a course.
+        </p>
+        <p>
+          <span className="visible-md visible-lg"> 
+            To get started, <span className="index-title">Select a course from the left.</span>
+          </span>
+          <span className="visible-sm visible-xs"> 
+            To get started, <span className="index-title">Select a course from the menu above.</span>
           </span>
         </p>
       </div>
