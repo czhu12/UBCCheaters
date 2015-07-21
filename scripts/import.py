@@ -29,7 +29,7 @@ def import_courses():
         try: 
             body = generate_req_body(dept, course)
             encoded_body = urllib.urlencode(body)
-            urllib2.urlopen('http://localhost:5555/api/courses', encoded_body)
+            urllib2.urlopen('http://localhost/api/courses', encoded_body)
         except:
             print encoded_body, " failed"
 

@@ -148,6 +148,8 @@ hr.style-six {
   background-color: #16a085;
 }
 .home-link {
+  position: absolute;
+  top: 20px;
   text-decoration: none;
 }
 .home-link:hover {
@@ -283,6 +285,17 @@ hr.style-six {
 
 .index-prompt {
   padding-top: 30px;
+}
+
+#main-logo {
+  height: 40px;
+  width: 40px;
+}
+
+.left-nav-header {
+  padding-top: 15px;
+  position: relative;
+  padding-left: 10px;
 }
 
 html, body {

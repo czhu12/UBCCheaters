@@ -39,7 +39,10 @@ var CourseList = React.createClass({
 
     return (
       <div className="left-hand-wrapper">
-        <a className="home-link" href="/"><div className="app-name">{Constants.Terms.APP_NAME}</div></a>
+        <img id="main-logo" src="/logo-white.png" />
+        <a className="home-link" href="/">
+          <div className="app-name">{Constants.Terms.APP_NAME}</div>
+        </a>
         <div className="course-list-container">
           <CourseSearchBar />
           <ul className="course-list">
